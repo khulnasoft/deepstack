@@ -1,0 +1,4243 @@
+---
+dates: []
+file-contents:
+  releasenotes/notes/AnalyzeResult-forward-declaration-5ed1bd9b6dc62c6f.yaml:
+    fixes:
+    - 'Forward declaration of `AnalyzeResult` type in `AzureOCRDocumentConverter`.
+
+
+      `AnalyzeResult` is already imported in a lazy import block.
+
+      The forward declaration avoids issues when `azure-ai-formrecognizer>=3.2.0b2`
+      is not installed.
+
+      '
+  releasenotes/notes/adapt-gpt-generator-bb7f52bd67f6b197.yaml:
+    preview:
+    - 'Adapt GPTGenerator to use strings for input and output
+
+      '
+  releasenotes/notes/add-CohereGenerator-ca55e5b8e46df754.yaml:
+    preview:
+    - 'Add CohereGenerator compatible with Cohere generate endpoint
+
+      '
+  releasenotes/notes/add-MarkdownToTextDocument-f97ec6c5fb35527d.yaml:
+    preview:
+    - 'Add MarkdownToTextDocument, a file converter that converts Markdown files into
+      a text Documents.
+
+      '
+  releasenotes/notes/add-TEI-embedders-8c76593bc25a7219.yaml:
+    features:
+    - "Add HuggingFace TEI Embedders - `HuggingFaceTEITextEmbedder` and `HuggingFaceTEIDocumentEmbedder`.\n\
+      \nAn example using `HuggingFaceTEITextEmbedder` to embed a string:\n```python\n\
+      from deepstack.components.embedders import HuggingFaceTEITextEmbedder\ntext_to_embed\
+      \ = \"I love pizza!\"\ntext_embedder = HuggingFaceTEITextEmbedder(\n    model=\"\
+      BAAI/bge-small-en-v1.5\", url=\"<your-tei-endpoint-url>\", token=\"<your-token>\"\
+      \n)\nprint(text_embedder.run(text_to_embed))\n# {'embedding': [0.017020374536514282,\
+      \ -0.023255806416273117, ...],\n```\n\nAn example using `HuggingFaceTEIDocumentEmbedder`\
+      \ to create Document embeddings:\n```python\nfrom deepstack.dataclasses import\
+      \ Document\nfrom deepstack.components.embedders import HuggingFaceTEIDocumentEmbedder\n\
+      doc = Document(content=\"I love pizza!\")\ndocument_embedder = HuggingFaceTEIDocumentEmbedder(\n\
+      \    model=\"BAAI/bge-small-en-v1.5\", url=\"<your-tei-endpoint-url>\", token=\"\
+      <your-token>\"\n)\nresult = document_embedder.run([doc])\nprint(result[\"documents\"\
+      ][0].embedding)\n# [0.017020374536514282, -0.023255806416273117, ...]\n```\n"
+  releasenotes/notes/add-answerbuilder-2.0-5dd255eeba68041f.yaml:
+    preview:
+    - 'Add the `AnswerBuilder` component for Deepstack 2.0 that creates Answer objects
+      from the string output of Generators.
+
+      '
+  releasenotes/notes/add-apple-silicon-gpu-acceleration-38bf69781a933b95.yaml:
+    enhancements:
+    - 'Added support for Apple Silicon GPU acceleration through "mps pytorch", enabling
+      better performance on Apple M1 hardware.
+
+      '
+  releasenotes/notes/add-azure-embedders-fd5f4fbcab0e1c48.yaml:
+    features:
+    - 'Adds AzureOpenAIDocumentEmbedder and AzureOpenAITextEmbedder as new embedders.
+      These embedders are very similar to
+
+      their OpenAI counterparts, but they use the Azure API instead of the OpenAI
+      API.
+
+      '
+  releasenotes/notes/add-azure-generators-a30c786204b22e48.yaml:
+    features:
+    - 'Adds support for Azure OpenAI models with AzureOpenAIGenerator and AzureOpenAIChatGenerator
+      components.
+
+      '
+  releasenotes/notes/add-azure_ocr_doc_converter-935130b3b243d236.yaml:
+    preview:
+    - 'Add AzureOCRDocumentConverter to convert files of different types using Azure''s
+      Document Intelligence Service.
+
+      '
+  releasenotes/notes/add-batch_size_faiss_init-5e97c1fb9409f873.yaml:
+    enhancements:
+    - 'Add batch_size to the __init__ method of FAISS Document Store. This works as
+      the default value for all methods of
+
+      FAISS Document Store that support batch_size.
+
+      '
+  releasenotes/notes/add-blob-type-2a9476a39841f54d.yaml:
+    preview:
+    - 'Add ByteStream type to send binary raw data across components
+
+      in a pipeline.
+
+      '
+  releasenotes/notes/add-calculate-metrics-metricsresults-03bf27ce8b16cff5.yaml:
+    features:
+    - 'Adds `calculate_metrics()` function to EvaluationResult for computation of
+      evaluation metrics.
+
+      Adds `Metric` class to store list of available metrics.
+
+      Adds `MetricsResult` class to store the metric values computed during the evaluation.
+
+      '
+  releasenotes/notes/add-chat-message-c456e4603529ae85.yaml:
+    preview:
+    - 'Introduce ChatMessage data class to facilitate structured handling and processing
+      of message content
+
+      within LLM chat interactions.
+
+      '
+  releasenotes/notes/add-custom-converter-hook-to-pypdf-cc7c333a6e7fc5f7.yaml:
+    preview:
+    - 'Add callable hook to PyPDFToDocument to enable easier customization of pdf
+      to Document conversion.
+
+      '
+  releasenotes/notes/add-default-value-to-input-socket-2e62116fc4be5214.yaml:
+    enhancements:
+    - 'Add a field called `default_value` to the `InputSocket` dataclass.
+
+      Derive `is_mandatory` value from the presence of `default_value`.
+
+      '
+  releasenotes/notes/add-dimensions-parameter-azureopeaniembedders-ef48fcc7c064b45c.yaml:
+    enhancements:
+    - 'add dimensions parameter to Azure OpenAI Embedders (AzureOpenAITextEmbedder
+      and AzureOpenAIDocumentEmbedder) to fully support new embedding models like
+      text-embedding-3-small, text-embedding-3-large and upcoming ones
+
+      '
+  releasenotes/notes/add-dimensions-parameter-to-OpenAI-Embedders-to-fully-support-the-new-models-1393cc235e457733.yaml:
+    enhancements:
+    - 'add dimensions parameter to OpenAI Embedders to fully support new embedding
+      models like text-embedding-3-small, text-embedding-3-large and upcoming ones
+
+      '
+  releasenotes/notes/add-diversity-ranker-6ecee21134eda673.yaml:
+    features:
+    - 'Add `SentenceTransformersDiversityRanker`.
+
+      The Diversity Ranker orders documents in such a way as to maximize the overall
+      diversity of the given documents.
+
+      The ranker leverages sentence-transformer models to calculate semantic embeddings
+      for each document and the query.
+
+      '
+  releasenotes/notes/add-document-writer-number-of-documents-written-2c57f3a5d6ae2131.yaml:
+    enhancements:
+    - 'Document writer returns the number of documents written.
+
+      '
+  releasenotes/notes/add-dynamic-per-message-templating-908468226c5e3d45.yaml:
+    preview:
+    - 'Adds `ChatMessage` templating in `PromptBuilder`
+
+      '
+  releasenotes/notes/add-dynamic-prompt-builder-e61c4b11405b8d80.yaml:
+    preview:
+    - 'Add `DynamicPromptBuilder` to dynamically generate prompts from either a list
+      of ChatMessage instances or a string
+
+      template, leveraging Jinja2 templating for flexible and efficient prompt construction.
+
+      '
+  releasenotes/notes/add-eval-and-evaluation-result-5e9ac742e323bda8.yaml:
+    preview:
+    - 'Add eval function for evaluation of components and Pipelines.
+
+      Adds EvaluationResult to store results of evaluation.
+
+      '
+  releasenotes/notes/add-exact-match-a7df21717238b771.yaml:
+    features:
+    - 'Adds support for the Exact Match metric to `EvaluationResult.calculate_metrics(...)`:
+
+      ```python
+
+      from deepstack.evaluation.metrics import Metric
+
+      exact_match_metric = eval_result.calculate_metrics(Metric.EM, output_key="answers")
+
+      ```
+
+      '
+  releasenotes/notes/add-f1-d54cc900bec753f7.yaml:
+    features:
+    - 'Adds support for the F1 metric to `EvaluationResult.calculate_metrics(...)`:
+
+      ```python
+
+      from deepstack.evaluation.metrics import Metric
+
+      f1_metric = eval_result.calculate_metrics(Metric.F1, output_key="answers")
+
+      ```
+
+      '
+  releasenotes/notes/add-file-extension-classifier-preview-40f31c27bbd7cff9.yaml:
+    preview:
+    - 'Adds FileExtensionClassifier to preview components.
+
+      '
+  releasenotes/notes/add-filter-retriever-8901af26144d1a17.yaml:
+    features:
+    - 'Add FilterRetriever.
+
+      It retrieves documents that match the provided (either at init or runtime) filters.
+
+      '
+  releasenotes/notes/add-hf-free-tier-checks-99384060139d5d30.yaml:
+    fixes:
+    - 'Resolves a bug where the HuggingFaceTGIGenerator and HuggingFaceTGIChatGenerator
+      encountered issues if provided
+
+      with valid models that were not available on the HuggingFace inference API rate-limited
+      tier. The fix, detailed
+
+      in [GitHub issue #6816](https://github.com/khulnasoft/deepstack/issues/6816)
+      and its GitHub PR, ensures these
+
+      components now correctly handle model availability, eliminating previous limitations.
+
+      '
+  releasenotes/notes/add-html-to-document-21fe38b244388f4d.yaml:
+    preview:
+    - 'Adds HTMLToDocument component to convert HTML to a Document.
+
+      '
+  releasenotes/notes/add-hugging-face-chat-local-5fe7a88e24fde11b.yaml:
+    features:
+    - 'Introducing the HuggingFaceLocalChatGenerator, a new chat-based generator designed
+      for leveraging chat models from
+
+      Hugging Face''s (HF) model hub. Users can now perform inference with chat-based
+      models in a local runtime, utilizing
+
+      familiar HF generation parameters, stop words, and even employing custom chat
+      templates for custom message formatting.
+
+      This component also supports streaming responses and is optimized for compatibility
+      with a variety of devices.
+
+
+      Here is an example of how to use the HuggingFaceLocalChatGenerator:
+
+
+      ```python
+
+      from deepstack.components.generators.chat import HuggingFaceLocalChatGenerator
+
+      from deepstack.dataclasses import ChatMessage
+
+
+      generator = HuggingFaceLocalChatGenerator(model="HuggingFaceH4/zephyr-7b-beta")
+
+      generator.warm_up()
+
+      messages = [ChatMessage.from_user("What''s Natural Language Processing? Be brief.")]
+
+      print(generator.run(messages))
+
+      ```
+
+      '
+  releasenotes/notes/add-huggingface-tgi-chat-c63f4879a5d81342.yaml:
+    preview:
+    - 'Adds `HuggingFaceTGIChatGenerator` for text and chat generation. This components
+      support remote inferencing for
+
+      Hugging Face LLMs via text-generation-inference (TGI) protocol.
+
+      '
+  releasenotes/notes/add-huggingface-tgi-generator-9d7eed86f5246ea9.yaml:
+    preview:
+    - 'Adds `HuggingFaceTGIGenerator` for text generation. This components support
+      remote inferencing for
+
+      Hugging Face LLMs via text-generation-inference (TGI) protocol.
+
+      '
+  releasenotes/notes/add-indexing-ready-made-pipeline-85c1da2f8f910f9d.yaml:
+    features:
+    - 'Add a indexing `build_indexing_pipeline` utility function
+
+      '
+  releasenotes/notes/add-link-content-fetcher-145915976f38e1e0.yaml:
+    preview:
+    - 'Introduced the LinkContentFetcher in Deepstack 2.0. This component fetches
+      content from specified
+
+      URLs and converts them into ByteStream objects for further processing in Deepstack
+      pipelines.
+
+      '
+  releasenotes/notes/add-lost-in-the-middle-ranker-6ad7dda754fad5a9.yaml:
+    features:
+    - 'The LostInTheMiddleRanker can be used like other rankers in Deepstack. After
+
+      initializing LostInTheMiddleRanker with the desired parameters, it can be
+
+      used to rank/reorder a list of documents based on the "Lost in the Middle"
+
+      order - the most relevant documents are located at the top and bottom of
+
+      the returned list, while the least relevant documents are found in the
+
+      middle. We advise that you use this ranker in combination with other rankers,
+
+      and to place it towards the end of the pipeline.
+
+      '
+    prelude: 'We''re excited to introduce a new ranker to Deepstack - LostInTheMiddleRanker.
+      It reorders documents based on the "Lost in the Middle" order, a strategy that
+      places the most relevant paragraphs at the beginning or end of the context,
+      while less relevant paragraphs are positioned in the middle. This ranker, based
+      on the research paper "Lost in the Middle: How Language Models Use Long Contexts"
+      by Liu et al., can be leveraged in Retrieval-Augmented Generation (RAG) pipelines.
+
+      '
+  releasenotes/notes/add-lost-in-the-middle-ranker-976f2e9bf83c3c68.yaml:
+    features:
+    - 'Add LostInTheMiddleRanker.
+
+      It reorders documents based on the "Lost in the Middle" order, a strategy that
+
+      places the most relevant paragraphs at the beginning or end of the context,
+
+      while less relevant paragraphs are positioned in the middle.
+
+      '
+  releasenotes/notes/add-markdown-file-type-router-support-39a607faa5c1436f.yaml:
+    enhancements:
+    - 'Adds markdown mimetype support to the file type router i.e. `FileTypeRouter`
+      class.
+
+      '
+  releasenotes/notes/add-metadata-HTMLToDocument-42dbd074a46c979e.yaml:
+    preview:
+    - 'Adds support for adding additional metadata and utilizing metadata received
+      from ByteStream sources when creating documents using HTMLToDocument.
+
+      '
+  releasenotes/notes/add-metadata-field-ranker-a8afd5bf15f29a0a.yaml:
+    preview:
+    - 'Adds MetaFieldRanker, a component that ranks a list of Documents based on the
+      value of a metadata field of choice.
+
+      '
+  releasenotes/notes/add-metadata_router-2.0-63829ac5a0528e9d.yaml:
+    preview:
+    - 'Add `MetadataRouter`, a component that routes documents to different edges
+      based on the content of their fields
+
+      '
+  releasenotes/notes/add-model-kwargs-extractive-reader-c0b65ab34572408f.yaml:
+    enhancements:
+    - 'Add new variable model_kwargs to the ExtractiveReader so we can pass different
+      loading options supported by
+
+      HuggingFace.
+
+      '
+  releasenotes/notes/add-most-diverse-ranker-21cf310be4554551.yaml:
+    features:
+    - 'The DiversityRanker can be used like other rankers in Deepstack and
+
+      it can be particularly helpful in cases where you have highly relevant
+
+      yet similar sets of documents. By ensuring a diversity of documents,
+
+      this new ranker facilitates a more comprehensive utilization of the
+
+      documents and, particularly in RAG pipelines, potentially contributes
+
+      to more accurate and rich model responses.
+
+      '
+    prelude: 'We''re introducing a new ranker to Deepstack - DiversityRanker. This
+      ranker aims to maximize the overall diversity of the given documents. It leverages
+      sentence-transformer models to calculate semantic embeddings for each document.
+      It orders documents so that the next one, on average, is least similar to the
+      already selected documents. Such ranking results in a list where each subsequent
+      document contributes the most to the overall diversity of the selected document
+      set.
+
+      '
+  releasenotes/notes/add-mrr-metric-362527e55e21c24c.yaml:
+    features:
+    - 'Add support for Mean Reciprocal Rank (MRR) Metric to `StatisticalEvaluator`.
+
+      MRR measures the mean reciprocal rank of times a label is present in at least
+      one or more predictions.
+
+      '
+  releasenotes/notes/add-new-rankers-schema-generation-7ad92fd5c5de8937.yaml:
+    fixes:
+    - 'Adds LostInTheMiddleRanker, DiversityRanker, and RecentnessRanker to `deepstack/nodes/__init__.py`
+      and thus
+
+      ensures that they are included in JSON schema generation.
+
+      '
+  releasenotes/notes/add-on_agent_final_answer_to_agent_base-7798ea8de2f43af0.yaml:
+    enhancements:
+    - 'added support for using `on_final_answer` trough `Agent` `callback_manager`
+
+      '
+  releasenotes/notes/add-openai-async-1f65701142f77181.yaml:
+    enhancements:
+    - 'Add asyncio support to the OpenAI invocation layer.
+
+      '
+  releasenotes/notes/add-output-adapter-5fab4cfcb0218925.yaml:
+    features:
+    - 'Introducing the OutputAdapter component which enables seamless data flow between
+      pipeline components by adapting the output of one component to match the expected
+      input of another using Jinja2 template expressions. This addition opens the
+      door to greater flexibility in pipeline configurations, facilitating custom
+      adaptation rules and exemplifying a structured approach to inter-component communication.
+
+      '
+  releasenotes/notes/add-page-number-to-answer-1b6d68dc93508314.yaml:
+    enhancements:
+    - 'The ExtractiveReader can now add page numbers to the meta data of ExtractedAnswers.
+
+      It''s done automatically if the source document of the ExtractedAnswer contains
+      a page number in its meta data.
+
+      The ExtractedAnswer will then contain a key "answer_page_number" in its meta
+      data.
+
+      '
+  releasenotes/notes/add-page-number-to-document-splitter-162e9dc7443575f0.yaml:
+    enhancements:
+    - 'Now the DocumentSplitter adds the "page_number" field to the metadata of all
+      output documents to keep track of the page of the original document it belongs
+      to.
+
+      '
+    highlights: 'Add the "page_number" field to the metadata of all output documents.
+
+      '
+  releasenotes/notes/add-pdfminer-converter-f08f68e38ef82f4a.yaml:
+    enhancements:
+    - 'Provides users the ability to customize text extraction from PDF files. It
+      is particularly useful for PDFs with unusual layouts, such as those containing
+      multiple text columns. For instance, users can configure the object to retain
+      the reading order.
+
+      '
+  releasenotes/notes/add-pipeline-templates-831f857c6387f8c3.yaml:
+    highlights: 'Introducing a flexible and dynamic approach to creating NLP pipelines
+      with predefined templates. This innovative feature allows users to easily construct
+      and customize complex data processing pipelines for various NLP tasks.
+
+      For example, the following pipeline template can be used to create an indexing
+      pipeline: ```python from deepstack import Pipeline, PredefinedPipeline
+
+      pipe = Pipeline.from_template(PredefinedPipeline.INDEXING) result = pipe.run({"converter":
+      {"sources": ["some_file.txt"]}}) ```
+
+      '
+  releasenotes/notes/add-promptnode-arun-bc4c2bcc9c653015.yaml:
+    enhancements:
+    - 'PromptNode can now be run asynchronously by calling the `arun` method.
+
+      '
+  releasenotes/notes/add-pypdf-to-document-converter-4a39c29abc4da7ba.yaml:
+    preview:
+    - 'Adds support for PDF files to the Document converter via pypdf library.
+
+      '
+  releasenotes/notes/add-rag-openapi-services-f3e377c49ff0f258.yaml:
+    features:
+    - 'Adds RAG OpenAPI services integration.
+
+      '
+  releasenotes/notes/add-reno-e284cb173ab45ab3.yaml:
+    prelude: 'Release notes are now managed by `reno`. The main difference is that
+      every contributor is responsible for adding release notes for the feature or
+      bugfix they''re introducing in Deepstack in the very same Pull Request containing
+      the code changes. The goal is to encourage detailed and accurate notes for every
+      release, especially when it comes to complex features or breaking changes.
+
+      '
+    upgrade:
+    - 'If you''re a Deepstack contributor, you need a new tool called `reno` to manage
+      the release notes.
+
+      Please run `pip install -e .[dev]` to ensure you have `reno` available in your
+      environment.
+
+      '
+  releasenotes/notes/add-required-flag-for-prompt-builder-inputs-f5d3ffb3cb7df8d0.yaml:
+    enhancements:
+    - 'Enhanced PromptBuilder to specify and enforce required variables in prompt
+      templates.
+
+      '
+  releasenotes/notes/add-router-f1f0cec79b1efe9a.yaml:
+    preview:
+    - 'Add `ConditionalRouter` component to enhance the conditional pipeline routing
+      capabilities.
+
+      The `ConditionalRouter` component orchestrates the flow of data by evaluating
+      specified route conditions
+
+      to determine the appropriate route among a set of provided route alternatives.
+
+      '
+  releasenotes/notes/add-sas-b8dbf61c0d78ba19.yaml:
+    features:
+    - "Adds support for the Semantic Answer Similarity (SAS) metric to `EvaluationResult.calculate_metrics(...)`:\n\
+      ```python\nfrom deepstack.evaluation.metrics import Metric\nsas_metric = eval_result.calculate_metrics(\n\
+      \    Metric.SAS, output_key=\"answers\", model=\"sentence-transformers/paraphrase-multilingual-mpnet-base-v2\"\
+      \n)\n```\n"
+  releasenotes/notes/add-search_engine_kwargs-to-web-retriever-67fac44ef0039b7f.yaml:
+    enhancements:
+    - 'Add `search_engine_kwargs` param to WebRetriever so it can be propagated
+
+      to WebSearch. This is useful, for example, to pass the engine id when
+
+      using Google Custom Search.
+
+      '
+  releasenotes/notes/add-searchapi-integration-bb9130485c3c9429.yaml:
+    preview:
+    - Integrate SearchApi as an additional websearch provider.
+  releasenotes/notes/add-sentence-transformers-document-embedder-f1e8612b8eaf9b7f.yaml:
+    preview:
+    - 'Add Sentence Transformers Document Embedder.
+
+      It computes embeddings of Documents. The embedding of each Document is stored
+      in the `embedding` field of the Document.
+
+      '
+  releasenotes/notes/add-sentence-transformers-text-embedder-2ce0de6f7a1149e1.yaml:
+    preview:
+    - 'Add Sentence Transformers Text Embedder.
+
+      It is a simple component that embeds strings into vectors.
+
+      '
+  releasenotes/notes/add-serper-dev-8c582749728e3699.yaml:
+    preview:
+    - Adds SerperDevWebSearch component to retrieve URLs from the web. See https://serper.dev/
+      for more information.
+  releasenotes/notes/add-similarity-ranker-401bf595cea7318a.yaml:
+    preview:
+    - 'Adds SimilarityRanker, a component that ranks a list of Documents based on
+      their similarity to the query.
+
+      '
+  releasenotes/notes/add-skip-prompt-for-hf-model-agent-89aef2838edb907c.yaml:
+    fixes:
+    - 'Fix the bug that the responses of Agents using local HF models contain the
+      prompt text.
+
+      '
+  releasenotes/notes/add-split-by-page-to-DocumentSplitter-63232c17d858d787.yaml:
+    enhancements:
+    - 'Added split by page to DocumentSplitter, which will split the document at \f
+
+      '
+  releasenotes/notes/add-streaming-chunk-67897d7cb2c0d7c0.yaml:
+    preview:
+    - 'Introduce the StreamingChunk dataclass for efficiently handling chunks of data
+      streamed from a language model,
+
+      encapsulating both the content and associated metadata for systematic processing.
+
+      '
+  releasenotes/notes/add-tikaconverter-2.0-ef637f93114e6c96.yaml:
+    preview:
+    - 'Add TikaDocumentConverter component to convert files of different types to
+      Documents.
+
+      '
+  releasenotes/notes/add-timeout-arg-to-promptnode-de11f17733344052.yaml:
+    enhancements:
+    - 'Introduces a new timeout keyword argument in PromptNode, addressing and fixing
+      the issue #5380 for enhanced control over individual calls to OpenAI.
+
+      '
+  releasenotes/notes/add-top-p-sampler-ad6e0f5d623a6bb5.yaml:
+    preview:
+    - 'Adds TopPSampler, a component selects documents based on the cumulative probability
+      of the Document scores using top p (nucleus) sampling.
+
+      '
+  releasenotes/notes/add-truncate-normalize-tei-6c998b14154267bb.yaml:
+    features:
+    - 'Adds `truncate` and `normalize` parameters to `HuggingFaceTEITextEmbedder`
+      and `HuggingFaceTEITextEmbedder` for allowing truncation and normalization of
+      embeddings.
+
+      '
+  releasenotes/notes/add-trust-remote-code-feature-c133b2b245d2ea7a.yaml:
+    features:
+    - 'Add trust_remote_code parameter to SentenceTransformersDocumentEmbedder and
+      SentenceTransformersTextEmbedder for allowing custom models and scripts.
+
+      '
+  releasenotes/notes/add-v2-answer-class-31bc8d3116922594.yaml:
+    preview:
+    - Add Answer base class for deepstack v2
+    - Add GeneratedAnswer and ExtractedAnswer
+  releasenotes/notes/add-v2-extractive-reader-a2158d38781803ec.yaml:
+    preview:
+    - 'This adds an ExtractiveReader for v2. It should be a replacement where
+
+      FARMReader would have been used before for inference.
+
+      The confidence scores are calculated differently from FARMReader because
+
+      each span is considered to be an independent binary classification task.
+
+      '
+  releasenotes/notes/add-yaml-marshaller-030e889f46484573.yaml:
+    preview:
+    - 'Add `dumps`, `dump`, `loads` and `load` methods to save
+
+      and load pipelines in Yaml format.
+
+      '
+  releasenotes/notes/adjust-max-new-tokens-to-512-in-huggingface-generators-76d9aba116b65e70.yaml:
+    enhancements:
+    - 'Set max_new_tokens default to 512 in Hugging Face generators.
+
+      '
+  releasenotes/notes/adjust-web-retriever-caching-logic-2e05fbc972a86f29.yaml:
+    enhancements:
+    - 'The WebRetriever now employs an enhanced caching mechanism that caches web
+      page content based on search engine
+
+      results rather than the query.
+
+      '
+  releasenotes/notes/adopt-hf-token-770edaccf6278ad9.yaml:
+    preview:
+    - 'Adopt Hugging Face `token` instead of the deprecated `use_auth_token`.
+
+      Add this parameter to `ExtractiveReader` and `SimilarityRanker` to allow
+
+      loading private models.
+
+      Proper handling of `token` during serialization: if it is a string (a possible
+      valid token)
+
+      it is not serialized.
+
+      '
+  releasenotes/notes/allow-connecting-same-components-again-e63cf719b9bf2a14.yaml:
+    issues:
+    - 'Make `connect` idempotent, allowing connecting the same components more than
+      once. Specially useful
+
+      in Jupiter notebooks. Fixes https://github.com/khulnasoft/deepstack/issues/6359.
+
+      '
+  releasenotes/notes/allow-simplified-pipeline-run-input-e3dd98ff38f0bc01.yaml:
+    preview:
+    - 'Adds option to run pipelines without specifying component inputs and their
+      corresponding key/value pairs. Instead,
+
+      provide the input keys/values directly, and the pipeline''s internal mechanisms
+      will automatically determine the
+
+      appropriate components.
+
+      '
+  releasenotes/notes/answer-refactoring-b617afa946311ac8.yaml:
+    enhancements:
+    - 'Refactor `Answer` dataclass and classes that inherited it.
+
+      Now `Answer` is a Protocol, classes that used to inherit it now respect that
+      interface.
+
+      We also added a new `ExtractiveTableAnswer` to be used for table question answering.
+
+
+      All classes now are easily serializable using `to_dict()` and `from_dict()`
+      like `Document` and components.
+
+      '
+  releasenotes/notes/async-pipeline-20649b54ecff2706.yaml:
+    features:
+    - 'Add experimental support for asynchronous `Pipeline` run
+
+      '
+  releasenotes/notes/azure-ocr-converter-enhancements-c882456cad9a5efc.yaml:
+    enhancements:
+    - 'Enhanced the AzureOCRDocumentConverter to include advanced handling of tables
+      and text. Features such as extracting preceding and following context for tables,
+      merging multiple column headers, and enabling single column page layout for
+      text have been introduced. This update furthers the flexibility and accuracy
+      of document conversion within complex layouts.
+
+      '
+  releasenotes/notes/bedrock-support-bce28e3078c85c12.yaml:
+    features:
+    - 'You can use Amazon Bedrock models in Deepstack.
+
+      '
+    prelude: 'Deepstack now supports Amazon Bedrock models, including all existing
+      and previously announced models, like Llama-2-70b-chat. To use these models,
+      simply pass the model ID in the model_name_or_path parameter, like you do for
+      any other model. For details, see [Amazon Bedrock Docmentation](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids-arns.html).
+
+      For example, the following code loads the Llama 2 Chat 13B model: ```python
+      from deepstack.nodes import PromptNode
+
+      prompt_node = PromptNode(model_name_or_path="meta.llama2-13b-chat-v1") ```
+
+      '
+  releasenotes/notes/better-doc-repr-6d35de1cf4b25697.yaml:
+    preview:
+    - 'Introduce a new Document representation, which includes meta, score and
+
+      embedding size.
+
+      '
+  releasenotes/notes/better-error-FileExtensionClassifier-4defc51ed116c2a2.yaml:
+    preview:
+    - 'Improve error messaging in the FileExtensionClassifier constructor
+
+      to avoid common mistakes.
+
+      '
+  releasenotes/notes/bump-transformers-to-4-32-1-5b800ceff440b871.yaml:
+    enhancements:
+    - 'Upgrade transformers to the latest version 4.32.1 so that Deepstack benefits
+      from Llama and T5 bugfixes: https://github.com/huggingface/transformers/releases/tag/v4.32.1
+
+      '
+  releasenotes/notes/bump-transformers-to-4-32-341a42ff09796725.yaml:
+    enhancements:
+    - 'Upgrade Transformers to the latest version 4.32.0.
+
+      This version adds support for the GPTQ quantization and integrates MPT models.
+
+      '
+  releasenotes/notes/bump-transformers-to-4-34-38d045d8e42ea0a2.yaml:
+    enhancements:
+    - 'Upgrade Transformers to the latest version 4.34.1.
+
+      This version adds support for the new Mistral, Persimmon, BROS, ViTMatte, and
+      Nougat models.
+
+      '
+  releasenotes/notes/byte-stream-mime-type-b060e96791c4993a.yaml:
+    preview:
+    - 'Add `mime_type` field to `ByteStream` dataclass.
+
+      '
+  releasenotes/notes/cache_checker_output_type-0b05e75ca41aab61.yaml:
+    enhancements:
+    - Modify the output type of `CacheChecker` from `List[Any]` to `List` to make
+      it possible to connect it in a Pipeline.
+  releasenotes/notes/canals-0.10.0-bfa4020a8cf207c4.yaml:
+    preview:
+    - Upgrade Canals to 0.10.0
+  releasenotes/notes/canals-0.4.0-b69b19069c4a9e0f.yaml:
+    preview:
+    - Migrate existing v2 components to Canals 0.4.0
+    - Fix TextFileToDocument using wrong Document class
+  releasenotes/notes/change-import-paths-3d4eae690412e545.yaml:
+    preview:
+    - 'Change import paths under the "preview" package to minimize
+
+      module namespace pollution.
+
+      '
+  releasenotes/notes/change-localwhispertranscriber-run-3b0a818060867720.yaml:
+    enhancements:
+    - 'Add support for `ByteStream` to `LocalWhisperTranscriber` and uniform the
+
+      input socket names to the other components in Deepstack.
+
+      '
+    upgrade:
+    - 'If you have a `LocalWhisperTranscriber` in a pipeline, change the `audio_files`
+
+      input name to `sources`. Similarly for standalone invocation of the component,
+
+      pass `sources` instead of `audio_files` to the `run()` method.
+
+      '
+  releasenotes/notes/change-metadata-to-meta-0fada93f04628c79.yaml:
+    enhancements:
+    - 'Rename `metadata` to `meta`.
+
+      Rename `metadata_fields_to_embed` to `meta_fields_to_embed` in all Embedders.
+
+      Rename `metadata_field` to `meta_field` in `MetaFieldRanker`.
+
+      '
+  releasenotes/notes/changed-metadata-to-meta-64cceb9ed19722fe.yaml:
+    enhancements:
+    - 'Rename all metadata references to meta.
+
+      '
+  releasenotes/notes/chat-with-website-template-23bec121f1a78726.yaml:
+    features:
+    - "Add a new pipeline template `PredefinedPipeline.CHAT_WITH_WEBSITE` to quickly\
+      \ create a pipeline\nthat will answer questions based on data collected from\
+      \ one or more web pages.\n\nUsage example:\n```python\nfrom deepstack import\
+      \ Pipeline, PredefinedPipeline\n\npipe = Pipeline.from_template(PredefinedPipeline.CHAT_WITH_WEBSITE)\n\
+      result = pipe.run({\n    \"fetcher\": {\"urls\": [\"https://deepstack.khulnasoft.com/overview/quick-start\"\
+      ]},\n    \"prompt\": {\"query\": \"How should I install Deepstack?\"}}\n)\n\n\
+      print(result[\"llm\"][\"replies\"][0])\n```\n"
+  releasenotes/notes/chatgpt-llm-generator-d043532654efe684.yaml:
+    preview:
+    - Introduce `GPTGenerator`, a class that can generate completions using OpenAI
+      Chat models like GPT3.5 and GPT4.
+  releasenotes/notes/check-id-hash-keys-postinit-28b012cdeada2c1e.yaml:
+    preview:
+    - 'The Document dataclass checks if `id_hash_keys` is None or empty in
+
+      __post_init__. If so, it uses the default factory to set a default valid value.
+
+      '
+  releasenotes/notes/code-instrumentation-9ef657728bec3508.yaml:
+    features:
+    - "Added option to instrument pipeline and component runs.\nThis allows users\
+      \ to observe their pipeline runs and component runs in real-time via their chosen\
+      \ observability\ntool. Out-of-the-box support for OpenTelemetry and Datadog\
+      \ will be added in separate contributions.\n\nExample usage for [OpenTelemetry](https://opentelemetry.io/docs/languages/python/):\n\
+      \n1. Install OpenTelemetry SDK and exporter:\n  ```bash\n  pip install opentelemetry-sdk\
+      \ opentelemetry-exporter-otlp-proto-http\n  ```\n\n2. Configure OpenTelemetry\
+      \ SDK with your tracing provider and exporter:\n  ```python\n  from opentelemetry.sdk.resources\
+      \ import SERVICE_NAME, Resource\n\n  from opentelemetry import trace\n  from\
+      \ opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter\n\
+      \  from opentelemetry.sdk.trace import TracerProvider\n  from opentelemetry.sdk.trace.export\
+      \ import BatchSpanProcessor\n\n  # Service name is required for most backends\n\
+      \  resource = Resource(attributes={\n      SERVICE_NAME: \"deepstack\"\n  })\n\
+      \n  traceProvider = TracerProvider(resource=resource)\n  processor = BatchSpanProcessor(OTLPSpanExporter(endpoint=\"\
+      http://localhost:4318/v1/traces\"))\n  traceProvider.add_span_processor(processor)\n\
+      \  trace.set_tracer_provider(traceProvider)\n\n  tracer = traceProvider.get_tracer(\"\
+      my_application\")\n\n\n3. Create tracer\n  ```python\n     import contextlib\n\
+      \     from typing import Optional, Dict, Any, Iterator\n\n     from opentelemetry\
+      \ import trace\n     from opentelemetry.trace import NonRecordingSpan\n\n  \
+      \   from deepstack.tracing import Tracer, Span\n     from deepstack.tracing\
+      \ import utils as tracing_utils\n     import opentelemetry.trace\n\n\n     class\
+      \ OpenTelemetrySpan(Span):\n         def __init__(self, span: opentelemetry.trace.Span)\
+      \ -> None:\n             self._span = span\n\n         def set_tag(self, key:\
+      \ str, value: Any) -> None:\n             coerced_value = tracing_utils.coerce_tag_value(value)\n\
+      \             self._span.set_attribute(key, coerced_value)\n\n\n     class OpenTelemetryTracer(Tracer):\n\
+      \         def __init__(self, tracer: opentelemetry.trace.Tracer) -> None:\n\
+      \             self._tracer = tracer\n\n         @contextlib.contextmanager\n\
+      \         def trace(self, operation_name: str, tags: Optional[Dict[str, Any]]\
+      \ = None) -> Iterator[Span]:\n             with self._tracer.start_as_current_span(operation_name)\
+      \ as span:\n                 span = OpenTelemetrySpan(span)\n              \
+      \   if tags:\n                     span.set_tags(tags)\n\n                 yield\
+      \ span\n\n         def current_span(self) -> Optional[Span]:\n             current_span\
+      \ = trace.get_current_span()\n             if isinstance(current_span, NonRecordingSpan):\n\
+      \                 return None\n\n             return OpenTelemetrySpan(current_span)\n\
+      \n    ```\n\n4. Use the tracer with Deepstack:\n  ```python\n  from deepstack\
+      \ import tracing\n\n  deepstack_tracer = OpenTelemetryTracer(tracer)\n  tracing.enable_tracing(deepstack_tracer)\n\
+      \  ```\n\n5. Run your pipeline\n"
+  releasenotes/notes/codespell-d4a32b9c589ca26e.yaml:
+    enhancements:
+    - 'ci: Fix typos discovered by codespell running in pre-commit.
+
+      '
+  releasenotes/notes/complex-types-openapi-support-84d3daf8927ad915.yaml:
+    features:
+    - 'Enhanced OpenAPI integration by handling complex types of requests and responses
+      in OpenAPIServiceConnector and OpenAPIServiceToFunctions.
+
+      '
+  releasenotes/notes/component-greedy-d6630af901e96a4c.yaml:
+    features:
+    - 'Add `is_greedy` argument to `@component` decorator.
+
+      This flag will change the behaviour of `Component`s with inputs that have a
+      `Variadic` type
+
+      when running inside a `Pipeline`.
+
+
+      Variadic `Component`s that are marked as greedy will run as soon as they receive
+      their first input.
+
+      If not marked as greedy instead they''ll wait as long as possible before running
+      to make sure they
+
+      receive as many inputs as possible from their senders.
+
+
+      It will be ignored for all other `Component`s even if set explicitly.
+
+      '
+  releasenotes/notes/component-kw-only-run-args-eedee8907232d2d4.yaml:
+    fixes:
+    - 'Fix ComponentMeta ignoring keyword-only parameters in the `run` method. ComponentMeta.__call__
+      handles the creation of InputSockets for the component''s inputs when the latter
+      has not explicitly called _Component.set_input_types(). This logic was not correctly
+      handling keyword-only parameters.
+
+      '
+  releasenotes/notes/component-repr-a6486af81530bc3b.yaml:
+    enhancements:
+    - 'Add `__repr__` to all Components to print their I/O.
+
+      This can also be useful in Jupyter notebooks as this will be shown as a cell
+      output
+
+      if the it''s the last expression in a cell.
+
+      '
+  releasenotes/notes/components-reuse-ccc5f2d4b9d7f9ff.yaml:
+    enhancements:
+    - 'Change `Pipeline.add_component()` to fail if the `Component` instance has already
+      been added in another `Pipeline`.
+
+      '
+  releasenotes/notes/connect-return-pipeline-dcc1e0786b19861e.yaml:
+    enhancements:
+    - 'Change `Pipeline.connect()` to return the instance of `Pipeline`.
+
+      This way we can chain multiple `connect()` like so:
+
+      ```python
+
+      pipeline.connect("fetcher", "converter") \
+
+      .connect("converter", "splitter") \
+
+      .connect("splitter", "ranker") \
+
+      .connect("ranker", "prompt_builder") \
+
+      .connect("prompt_builder", "llm")
+
+      ```
+
+      '
+  releasenotes/notes/content-tracing-25df3909e11924b1.yaml:
+    enhancements:
+    - "Allow code instrumentation to also trace the input and output of components.\n\
+      This is useful for debugging and understanding the behavior of components.\n\
+      This behavior is disabled by default and can be enabled with one of the following\
+      \ methods:\n- Set the environment variable `DEEPSTACK_CONTENT_TRACING_ENABLED_ENV_VAR`\
+      \ to `true` before importing Deepstack.\n- Enable content tracing in the code:\n\
+      \    ```python\n    from deepstack import tracing\n    tracing.tracer.is_content_tracing_enabled\
+      \ = True\n    ```\n"
+  releasenotes/notes/context-relevance-04063b9dc9fe7379.yaml:
+    features:
+    - 'Add a new ContextRelevanceEvaluator component that can be used to evaluate
+      whether retrieved documents are relevant to answer a question with a RAG pipeline.
+
+      Given a question and a list of retrieved document contents (contexts), an LLM
+      is used to score to what extent the provided context is relevant. The score
+      ranges from 0 to 1.
+
+      '
+  releasenotes/notes/converters-allow-passing-meta-70fb498b6eb80468.yaml:
+    enhancements:
+    - 'Make all Converters accept `meta` in the `run` method, so that users can
+
+      provide their own metadata.
+
+      The length of this list should match the number of `sources`.
+
+      '
+  releasenotes/notes/converters-standardize-inputs-ed2ba9c97b762974.yaml:
+    enhancements:
+    - 'Make all the Converters accept the `sources` parameter in the `run` method.
+
+      `sources` is a list that can contain str, Path or ByteStream objects.
+
+      '
+    upgrade:
+    - 'If you are using `AzureOCRDocumentConverter` or `TikaDocumentConverter`,
+
+      you need to change `paths` to `sources` in the `run` method.
+
+
+      An example:
+
+      ```python
+
+      from deepstack.components.converters import TikaDocumentConverter
+
+      converter = TikaDocumentConverter()
+
+      converter.run(paths=["paths/to/file1.pdf", "path/to/file2.pdf"])
+
+      ```
+
+
+      The last line should be changed to:
+
+      ```python
+
+      converter.run(sources=["paths/to/file1.pdf", "path/to/file2.pdf"])
+
+      ```
+
+      '
+  releasenotes/notes/custom-query-dynamic-filters-dd83ec358d2f64a6.yaml:
+    features:
+    - "When using ``custom_query`` in ``BM25Retriever`` along with ``OpenSearch``\n\
+      or ``Elasticsearch``, we added support for dynamic ``filters``, like in regular\
+      \ queries.\nWith this change, you can pass filters at query-time without having\
+      \ to modify the ``custom_query``:\nInstead of defining filter expressions and\
+      \ field placeholders, all you have to do\nis setting the ``${filters}`` placeholder\
+      \ analogous to the ``${query}`` placeholder into\nyour ``custom_query``.\n**For\
+      \ example:**\n```python\n  {\n      \"query\": {\n          \"bool\": {\n  \
+      \            \"should\": [{\"multi_match\": {\n                  \"query\":\
+      \ ${query},                 // mandatory query placeholder\n               \
+      \   \"type\": \"most_fields\",\n                  \"fields\": [\"content\",\
+      \ \"title\"]}}\n              ],\n              \"filter\": ${filters}     \
+      \            // optional filters placeholder\n          }\n      }\n  }\n```\n"
+    upgrade:
+    - "The Opensearch custom query syntax changes: the old filter placeholders for\
+      \ ``custom_query`` are no longer supported.\nReplace your custom filter expressions\
+      \ with the new ``${filters}`` placeholder:\n\n**Old:**\n```python\n  retriever\
+      \ = BM25Retriever(\n    custom_query=\"\"\"\n      {\n          \"query\": {\n\
+      \              \"bool\": {\n                  \"should\": [{\"multi_match\"\
+      : {\n                      \"query\": ${query},\n                      \"type\"\
+      : \"most_fields\",\n                      \"fields\": [\"content\", \"title\"\
+      ]}}\n                  ],\n                  \"filter\": [\n               \
+      \       {\"terms\": {\"year\": ${years}}},\n                      {\"terms\"\
+      : {\"quarter\": ${quarters}}},\n                      {\"range\": {\"date\"\
+      : {\"gte\": ${date}}}}\n                  ]\n              }\n          }\n\
+      \      }\n    \"\"\"\n  )\n\n  retriever.retrieve(\n      query=\"What is the\
+      \ meaning of life?\",\n      filters={\"years\": [2019, 2020], \"quarters\"\
+      : [1, 2, 3], \"date\": \"2019-03-01\"}\n  )\n```\n\n**New:**\n```python\n  retriever\
+      \ = BM25Retriever(\n    custom_query=\"\"\"\n      {\n          \"query\": {\n\
+      \              \"bool\": {\n                  \"should\": [{\"multi_match\"\
+      : {\n                      \"query\": ${query},\n                      \"type\"\
+      : \"most_fields\",\n                      \"fields\": [\"content\", \"title\"\
+      ]}}\n                  ],\n                  \"filter\": ${filters}\n      \
+      \        }\n          }\n      }\n    \"\"\"\n  )\n\n  retriever.retrieve(\n\
+      \      query=\"What is the meaning of life?\",\n      filters={\"year\": [2019,\
+      \ 2020], \"quarter\": [1, 2, 3], \"date\": {\"$gte\": \"2019-03-01\"}}\n  )\n\
+      ```\n"
+  releasenotes/notes/datadog-tracer-b084cf64fcc575c6.yaml:
+    features:
+    - "Added out-of-the-box support for the Datadog Tracer. This allows you to instrument\
+      \ pipeline and component\nruns using Datadog and send traces to your preferred\
+      \ backend.\n\nTo use the Datadog Tracer you need to have the `ddtrace` package\
+      \ installed in your environment.\nTo instruct Deepstack to use the Datadog tracer,\
+      \ you have multiple options:\n\n* Run your Deepstack application using the `ddtrace`\
+      \ command line tool as described in the\n  the [ddtrace documentation](https://ddtrace.readthedocs.io/en/stable/installation_quickstart.html#tracing).\n\
+      \  This behavior can be disabled by setting the `DEEPSTACK_AUTO_TRACE_ENABLED_ENV_VAR`\
+      \ environment variable to `false`.\n* Configure the tracer manually in your\
+      \ code using the `ddtrace` package:\n  ```python\n  from deepstack.tracing import\
+      \ DatadogTracer\n  import deepstack.tracing\n  import ddtrace\n\n  tracer =\
+      \ ddtrace.tracer\n  tracing.enable_tracing(DatadogTracer(tracer))\n  ```\n"
+  releasenotes/notes/deepset-cloud-document-store-search-fields-40b2322466f808a3.yaml:
+    features:
+    - '`KhulnasoftCloudDocumentStore` supports searching multiple fields in sparse
+      queries. This enables you to search meta fields as well when using `BM25Retriever`.
+      For example set `search_fields=["content", "title"]` to search the `title` meta
+      field along with the document `content`.
+
+      '
+  releasenotes/notes/default-to-from-dict-7f7d89b6c36e2ab8.yaml:
+    preview:
+    - Migrate all components to Canals==0.7.0
+    - Add serialization and deserialization methods for all Deepstack components
+  releasenotes/notes/default-write-documents-policy-95afe5fb34fc73ad.yaml:
+    preview:
+    - 'Change the default `DuplicatePolicy` for the `DocumentStore.write_documents()`
+      protocol from `DuplicatePolicy.FAIL` to `DuplicatePolicy.NONE`.
+
+      '
+  releasenotes/notes/delete-old-eval-api-d83b3b0c83f847f3.yaml:
+    features:
+    - 'Remove the old evaluation API in favor of a Component based API.
+
+      We now have `SASEvaluator` and `StatisticalEvaluator` replacing the old API.
+
+      '
+  releasenotes/notes/deprecate-openai-answergenerator-537266612ba1ffff.yaml:
+    deprecations:
+    - 'Deprecate `OpenAIAnswerGenerator` in favor of `PromptNode`.
+
+      `OpenAIAnswerGenerator` will be removed in Deepstack 1.23.
+
+      '
+  releasenotes/notes/device-management-eed64f411c48fbc7.yaml:
+    upgrade:
+    - "Implement framework-agnostic device representations. The main impetus behind\
+      \ this change is to move away from stringified representations\nof devices that\
+      \ are not portable between different frameworks. It also enables support for\
+      \ multi-device inference in a generic manner.\n\nGoing forward, components can\
+      \ expose a single, optional device parameter in their constructor (`Optional[ComponentDevice]`):\n\
+      ```python\nimport deepstack.utils import ComponentDevice, Device, DeviceMap\n\
+      class MyComponent(Component):\n    def __init__(self, device: Optional[ComponentDevice]\
+      \ = None):\n        # If device is None, automatically select a device.\n  \
+      \      self.device = ComponentDevice.resolve_device(device)\n\n    def warm_up(self):\n\
+      \        # Call the framework-specific conversion method.\n        self.model\
+      \ = AutoModel.from_pretrained(\"khulnasoft/bert-base-cased-squad2\", device=self.device.to_hf())\n\
+      \n# Automatically selects a device.\nc = MyComponent(device=None)\n# Uses the\
+      \ first GPU available.\nc = MyComponent(device=ComponentDevice.from_str(\"cuda:0\"\
+      ))\n# Uses the CPU.\nc = MyComponent(device=ComponentDevice.from_single(Device.cpu()))\n\
+      # Allow the component to use multiple devices using a device map.\nc = MyComponent(device=ComponentDevice.from_multiple(DeviceMap({\n\
+      \      \"layer1\": Device.cpu(),\n      \"layer2\": Device.gpu(1),\n      \"\
+      layer3\": Device.disk()\n})))\n```\n"
+  releasenotes/notes/device-map-2ced24b510e45774.yaml:
+    enhancements:
+    - 'Use `device_map` when loading a TransformersSimilarityRanker and ExtractiveReader.
+
+      This allows for multi-device inference and for loading quantized models (e.g.
+      load_in_8bit=True)
+
+      '
+  releasenotes/notes/diversity-ranker-add-topk-24f23136f316129a.yaml:
+    enhancements:
+    - 'Add top_k parameter to the DiversityRanker init method.
+
+      '
+  releasenotes/notes/doc-id-rework-85e82b5359282f7e.yaml:
+    preview:
+    - 'Rework `Document.id` generation, if an `id` is not explicitly set it''s generated
+
+      using all `Document` field'' values, `score` is not used.
+
+      '
+  releasenotes/notes/document-backward-compatible-07c4151e98ef8511.yaml:
+    prelude: 'The `Document` serialisation has been changed quite a bit, this will
+      make it easier to implement new Document Stores.
+
+      The most notable change is that the `Document.flatten()` method has been removed.
+      `Document.to_dict()` now has a `flatten` parameter, that defaults to `True`
+      for backward compatibility. It will flatten metadata keys at the same level
+      of other `Document` fields when converting to `dict`.
+
+      `to_json` and `from_json` have been removed, as `to_dict` and `from_dict` already
+      handle serialisation of `dataframe` and `blob` fields. Now `metadata` must only
+      contain primitives that can be serialised to JSON with no custom encoders. If
+      any Document Store needs custom serialisation they can implement their own logic.
+
+      `Document` has also been made backward compatible so that it can be created
+      using dictionaries structured as the legacy 1.x `Document`. The legacy fields
+      will be converted automatically to their new counterparts, or ignored if there''s
+      none.
+
+      '
+    preview:
+    - 'Refactor Document serialisation and make it backward compatible with Deepstack
+      1.x
+
+      '
+  releasenotes/notes/document-blob-ae28734c5be561d9.yaml:
+    preview:
+    - 'Change `Document.blob` field type from `bytes` to `ByteStream` and remove `Document.mime_type`
+      field.
+
+      '
+  releasenotes/notes/document-embedding-type-d66c44ac6878fbdd.yaml:
+    preview:
+    - 'Change `Document`''s `embedding` field type from `numpy.ndarray` to `List[float]`
+
+      '
+  releasenotes/notes/document-equality-4bc1b5273bd5b7f1.yaml:
+    preview:
+    - 'Refactor `Document.__eq__()` so it compares the `Document`s dictionary
+
+      representation instead of only their `id`.
+
+      Previously this comparison would have unexpectedly worked:
+
+      ```python
+
+      first_doc = Document(id="1", content="Hey!")
+
+      second_doc = Document(id="1", content="Hello!")
+
+      assert first_doc == second_doc
+
+      first_doc.content = "Howdy!"
+
+      assert first_doc == second_doc
+
+      ```
+
+      With this change the last comparison would rightly fail.
+
+      '
+  releasenotes/notes/document-joiner-2-126bd60c84be6efa.yaml:
+    preview:
+    - 'Added a new DocumentJoiner component so that hybrid retrieval pipelines can
+      merge the document result lists of multiple retrievers.
+
+      Similarly, indexing pipelines can use DocumentJoiner to merge multiple lists
+      of documents created by different file converters.
+
+      '
+  releasenotes/notes/document-language-classifier-1ec0b3c4d08989c0.yaml:
+    preview:
+    - 'Added DocumentLanguageClassifier component so that Documents can be routed
+      to different components based on the detected language for example during preprocessing.
+
+      '
+  releasenotes/notes/document-map-evaluator-de896c94b54fe3fa.yaml:
+    features:
+    - 'Add DocumentMAPEvaluator, it can be used to calculate mean average precision
+      of retrieved documents.
+
+      '
+  releasenotes/notes/document-metadata-to-meta-8564aa3c045bb526.yaml:
+    preview:
+    - 'Rename `Document`''s `metadata` field to `meta` to enhance backward compatibility
+
+      '
+  releasenotes/notes/document-mrr-evaluator-fa7c266cc91201a7.yaml:
+    features:
+    - 'Add DocumentMRREvaluator, it can be used to calculate mean reciprocal rank
+      of retrieved documents.
+
+      '
+  releasenotes/notes/document-store-testing-c1a8050f06ff3e97.yaml:
+    prelude: "The `testing.DocumentStoreBaseTests` has been heavily overhauled. It\
+      \ has been split into multiple classes so developers can gradually test their\
+      \ Document Store as they're implemented. `DocumentStoreBaseTests` now inherits\
+      \ from this classes: - `CountDocumentsTest`, to test `DocumentStore.count_documents()`\
+      \ - `WriteDocumentsTest`, to test `DocumentStore.write_documents()` - `DeleteDocumentsTest`,\
+      \ to test `DocumentStore.delete_documents()` - `FilterDocumentsTest`, to test\
+      \ `DocumentStore.filter_documents()`\nTo use each class it's enough to inherit\
+      \ from it and define the `document_store` fixture to return an instance of the\
+      \ Document Store we're implementing. ```python class MyDocumentStoreCountDocumentTest(CountDocumentsTest):\n\
+      \    @pytest.fixture\n    def document_store(self):\n        return MyDocumentStore()\n\
+      ```\nThere's also another class that tests `DocumentStore.filter_documents()`\
+      \ using legacy filters. This is not inherited by `DocumentStoreBaseTests` but\
+      \ can be added as a base class to verify the support of legacy filters. - `LegacyFilterDocumentsTest`\n"
+    preview:
+    - 'Rework the `testing.DocumentStoreBaseTests` class to ease Document Stores development
+      and testing
+
+      '
+  releasenotes/notes/document-text-to-content-39b5439480af5c41.yaml:
+    preview:
+    - 'Rename `Document`''s `text` field to `content` to enhance backward compatibility
+
+      '
+  releasenotes/notes/document-writer-default-policy-693027781629fc73.yaml:
+    enhancements:
+    - 'Change `DocumentWriter` default `policy` from `DuplicatePolicy.FAIL` to `DuplicatePolicy.NONE`.
+
+      The `DocumentStore` protocol uses the same default so that different Document
+      Stores can choose
+
+      the default policy that better fit.
+
+      '
+  releasenotes/notes/document-writer-v2-bbe0a62b3066f9cf.yaml:
+    preview:
+    - 'Added new DocumentWriter component to Deepstack v2 preview so that documents
+      can be written to stores.
+
+      '
+  releasenotes/notes/dynamic-chat-prompt-templating-enhancement-e8d36cbf3be46da7.yaml:
+    enhancements:
+    - 'Enhanced DynamicChatPromptBuilder''s capabilities by allowing all user and
+      system messages to be templated with provided variables. This update ensures
+      a more versatile and dynamic templating process, making chat prompt generation
+      more efficient and customized to user needs.
+
+      '
+  releasenotes/notes/embedding-instructions-4feb216cbf796678.yaml:
+    features:
+    - 'Support for dense embedding instructions, used in retrieval models such as
+      BGE and LLM-Embedder.
+
+      '
+  releasenotes/notes/enable-set-max-length-during-runtime-097d65e537bf800b.yaml:
+    enhancements:
+    - 'Enable setting the `max_length` value when running PromptNodes using local
+      HF text2text-generation models.
+
+      '
+  releasenotes/notes/enable_pass_use_fast_to_transformers-b5fdf14d69aa58ec.yaml:
+    enhancements:
+    - enable passing use_fast to the underlying transformers' pipeline
+  releasenotes/notes/enhance-inmemorydocumentstore-bm25-incremental-indexing-ebaf43b7163f3a24.yaml:
+    enhancements:
+    - 'Re-implement `InMemoryDocumentStore` BM25 search with incremental indexing
+      by avoiding re-creating
+
+      the entire inverse index for every new query. This change also removes the dependency
+      on
+
+      `deepstack_bm25`. Please refer to [PR #7549](https://github.com/khulnasoft/deepstack/pull/7549)
+
+      for the full context.
+
+      '
+  releasenotes/notes/enhance-pipeline-draw-5fe3131db71f6f54.yaml:
+    enhancements:
+    - 'Add new `Pipeline.show()` method to generated image inline if run in a Jupyter
+      notebook.
+
+      If called outside a notebook it will raise a `PipelineDrawingError`.
+
+      `Pipeline.draw()` has also been simplified and the `engine` argument has been
+      removed.
+
+      Now all images will be generated using Mermaid.
+
+      '
+  releasenotes/notes/enhance-repr-0c5efa1e2ca6bafa.yaml:
+    enhancements:
+    - 'Customize `Pipeline.__repr__()` to return a nice text representation of it.
+
+      If run on a Jupyter notebook it will instead have the same behaviour as `Pipeline.show()`.
+
+      '
+  releasenotes/notes/enhanced-htmltodocument-content-extraction-229d63e7c7119807.yaml:
+    enhancements:
+    - 'Improved HTML content extraction by attempting to use multiple extractors in
+      order of priority until successful. An additional try_others parameter in HTMLToDocument,
+      which is true by default, determines whether subsequent extractors are used
+      after a failure. This enhancement decreases extraction failures, ensuring more
+      dependable content retrieval.
+
+      '
+  releasenotes/notes/exact-match-evaluator-197bb87b65e19d0c.yaml:
+    features:
+    - 'Add `AnswerExactMatchEvaluator`, a component that can be used to calculate
+      the Exact Match metric
+
+      comparing a list of expected answers with a list of predicted answers.
+
+      '
+  releasenotes/notes/extend-write-documents-855ffc315974f03b.yaml:
+    preview:
+    - Change `write_documents()` method in `DocumentStore` protocol to return the
+      number of document written
+  releasenotes/notes/extract_type_serialization-fc3ea6418ba5632d.yaml:
+    enhancements:
+    - 'Move `serialize_type` and `deserialize_type` in the `utils` module.
+
+      '
+  releasenotes/notes/extractive-qa-answer-dedup-7ca3b94b79b38854.yaml:
+    features:
+    - 'Introduces answer deduplication on the Document level based on an overlap threshold.
+
+      '
+  releasenotes/notes/extractive-reader-invalid-ans-a88e6b1d1ee897aa.yaml:
+    fixes:
+    - 'Fix issue with `ExtractiveReader` picking invalid answers when `answers_per_seq`
+      > num of valid answers
+
+      '
+  releasenotes/notes/faithfulness-evaluator-2e039a697c847d1c.yaml:
+    features:
+    - 'Add a new FaithfulnessEvaluator component that can be used to evaluate faithfulness
+      / groundedness / hallucinations of LLMs in a RAG pipeline.
+
+      Given a question, a list of retrieved document contents (contexts), and a predicted
+      answer, FaithfulnessEvaluator returns a score ranging from 0 (poor faithfulness)
+      to 1 (perfect faithfulness).
+
+      The score is the proportion of statements in the predicted answer that could
+      by inferred from the documents.
+
+      '
+  releasenotes/notes/feature-regex-mime-type-support-36381e74f593eb84.yaml:
+    enhancements:
+    - "Enhanced FileTypeRouter with Regex Pattern Support for MIME Types: This introduces\
+      \ a significant enhancement to the `FileTypeRouter`, now featuring support for\
+      \ regex pattern matching for MIME types. This powerful addition allows for more\
+      \ granular control and flexibility in routing files based on their MIME types,\
+      \ enabling the handling of broad categories or specific MIME type patterns with\
+      \ ease. This feature is particularly beneficial for applications requiring sophisticated\
+      \ file classification and routing logic.\n\nUsage example:\n```python\nfrom\
+      \ deepstack.components.routers import FileTypeRouter\n\nrouter = FileTypeRouter(mime_types=[r\"\
+      text/.*\", r\"application/(pdf|json)\"])\n\n# Example files to classify\nfile_paths\
+      \ = [\n    Path(\"document.pdf\"),\n    Path(\"report.json\"),\n    Path(\"\
+      notes.txt\"),\n    Path(\"image.png\"),\n]\n\nresult = router.run(sources=file_paths)\n\
+      \nfor mime_type, files in result.items():\n    print(f\"MIME Type: {mime_type},\
+      \ Files: {[str(file) for file in files]}\")\n```\n"
+  releasenotes/notes/file-classifier-add-media-files-support-e970524f726dd844.yaml:
+    enhancements:
+    - 'Enhance FileTypeClassifier to detect media file types like mp3, mp4, mpeg,
+      m4a, and similar.
+
+      '
+  releasenotes/notes/filters-converter-485cd24cf38407d0.yaml:
+    prelude: "Following the proposal to introduce a new way of declaring filters in\
+      \ Deepstack 2.x for Document Stores and all Components that use them, we introduce\
+      \ a utility function to convert the legacy style to the new style.\nThis will\
+      \ make life easier for developers when implementing new Document Stores as it\
+      \ will only be necessary for filtering logic for the new style filters, as conversion\
+      \ will be completely handled by the utility function.\nAn example usage would\
+      \ be something similar to this: ```python legacy_filter = {\n    \"$and\": {\n\
+      \        \"type\": {\"$eq\": \"article\"},\n        \"date\": {\"$gte\": \"\
+      2015-01-01\", \"$lt\": \"2021-01-01\"},\n        \"rating\": {\"$gte\": 3},\n\
+      \        \"$or\": {\"genre\": {\"$in\": [\"economy\", \"politics\"]}, \"publisher\"\
+      : {\"$eq\": \"nytimes\"}},\n    }\n} assert convert(legacy_filter) == {\n  \
+      \  \"operator\": \"AND\",\n    \"conditions\": [\n        {\"field\": \"type\"\
+      , \"operator\": \"==\", \"value\": \"article\"},\n        {\"field\": \"date\"\
+      , \"operator\": \">=\", \"value\": \"2015-01-01\"},\n        {\"field\": \"\
+      date\", \"operator\": \"<\", \"value\": \"2021-01-01\"},\n        {\"field\"\
+      : \"rating\", \"operator\": \">=\", \"value\": 3},\n        {\n            \"\
+      operator\": \"OR\",\n            \"conditions\": [\n                {\"field\"\
+      : \"genre\", \"operator\": \"in\", \"value\": [\"economy\", \"politics\"]},\n\
+      \                {\"field\": \"publisher\", \"operator\": \"==\", \"value\"\
+      : \"nytimes\"},\n            ],\n        },\n    ],\n} ```\nFor more information\
+      \ on the new filters technical specification see [proposal #6001](https://github.com/khulnasoft/deepstack/blob/main/proposals/text/6001-document-store-filter-rework.md)\n"
+    preview:
+    - 'Introduce a function to convert legacy filters to the new style
+
+      '
+  releasenotes/notes/fix-chatgpt-invocation-layer-bc25d0ea5f77f05c.yaml:
+    fixes:
+    - 'Fixed the bug that prevented the correct usage of ChatGPT invocation layer
+
+      in 1.21.1.
+
+      Added async support for ChatGPT invocation layer.
+
+      '
+  releasenotes/notes/fix-component-type-checking-issues-8eefa1157ffc3eba.yaml:
+    enhancements:
+    - 'Update `Component` protocol to fix type checking issues with some Language
+      Servers.
+
+      Most Language Servers and some type checkers would show warnings when calling
+      `Pipeline.add_component()`
+
+      as technically most `Component`s weren''t respecting the protocol we defined.
+
+      '
+  releasenotes/notes/fix-components-autocompletion-a2d87708309262b6.yaml:
+    fixes:
+    - 'Fix auto-complete never working for any Component
+
+      '
+  releasenotes/notes/fix-connect-with-same-name-5ce470f7f0451362.yaml:
+    fixes:
+    - 'Fix `Pipeline.connect()` so it connects sockets with same name if multiple
+      sockets with compatible types are found.
+
+      '
+  releasenotes/notes/fix-descriptor-__dict__-doesnt-apply-to-bf6d47872345ed24.yaml:
+    fixes:
+    - 'Fixes the error `descriptor ''__dict__'' for ''ComponentClassX'' objects doesn''t
+      apply to a ''ComponentClassX'' object` when calling
+
+      `dir()` on a component instance. This fix should allow auto-completion in code
+      editors.
+
+      '
+  releasenotes/notes/fix-document-constructor-18b9e5dd9522a918.yaml:
+    preview:
+    - 'Remove `id` parameter from `Document` constructor as it was ignored and a new
+      one was generated anyway.
+
+      This is a backwards incompatible change.
+
+      '
+  releasenotes/notes/fix-document-flatten-metadata-ef61dbbae08b1db7.yaml:
+    preview:
+    - 'Fix a failure that occurred when creating a document passing the ''meta'' keyword
+
+      to the constructor. Raise a specific ValueError if the ''meta'' keyword is passed
+
+      along with metadata as keyword arguments, the two options are mutually exclusive
+
+      now.
+
+      '
+  releasenotes/notes/fix-document-init-09c1cbb14202be7d.yaml:
+    preview:
+    - 'Make Document''s constructor fail when is passed fields that are not present
+      in the dataclass. An exception is made for  "content_type" and "id_hash_keys":
+      they are accepted in order to keep backward compatibility.
+
+      '
+  releasenotes/notes/fix-document-store-in-test-3640b8b079ff4539.yaml:
+    fixes:
+    - 'The `test_comparison_in` test case in the base document store tests used to
+
+      always pass, no matter how the `in` filtering logic was implemented in
+
+      document stores. With the fix, the `in` logic is actually tested. Some tests
+
+      might start to fail for document stores that don''t implement the `in` filter
+
+      correctly.
+
+      '
+  releasenotes/notes/fix-e2e-test-preprocessing-7b24f848e074c48a.yaml:
+    preview:
+    - 'Updated end-to-end test to use the DocumentLanguageClassifier with a MetadataRouter
+      in a preprocessing pipeline.
+
+      '
+  releasenotes/notes/fix-embedders-docs-examples-72119352572012d7.yaml:
+    preview:
+    - 'Fix usage examples for OpenAIDocumentEmbedder and SentenceTransformersDocumentEmbedder.
+
+      '
+  releasenotes/notes/fix-entityextractor-json-serialzable-b7d643eb83a3e58c.yaml:
+    fixes:
+    - 'Fix EntityExtractor output not JSON serializable.
+
+      '
+  releasenotes/notes/fix-issue-#5485-efa4486a414ce584.yaml:
+    fixes:
+    - fix issue 5485, TransformersImageToText.generate_captions accepts "str"
+  releasenotes/notes/fix-join-docs-null-score-746c392a87adffcc.yaml:
+    fixes:
+    - 'When using `JoinDocuments` with `join_mode=concatenate` (default) and
+
+      passing duplicate documents, including some with a null score, this
+
+      node raised an exception.
+
+      Now this case is handled correctly and the documents are joined as expected.
+
+      '
+  releasenotes/notes/fix-joinDocuments-concatenate-56a7cdba00a7248e.yaml:
+    enhancements:
+    - 'Make JoinDocuments return only the document with the highest score if there
+      are duplicate documents in the list.
+
+      '
+  releasenotes/notes/fix-logger-reserved-attributes-9e4d4920c1e41a62.yaml:
+    fixes:
+    - 'Remove the usage of reserved keywords in the logger calls, causing a `KeyError`
+      when setting the log level
+
+      to DEBUG.
+
+      '
+  releasenotes/notes/fix-metafieldranker-weight-in-run-66ce13191e596214.yaml:
+    fixes:
+    - 'Fix a bug in the `MetaFieldRanker` where the `weight` parameter passed to the
+      `run` method was not being used.
+
+      '
+  releasenotes/notes/fix-metafieldranker-weight-in-run-method-e4e11011a8b99c34.yaml:
+    fixes:
+    - 'Fixed a bug in the `MetaFieldRanker`: when the `weight` parameter was set to
+      0 in the `run` method,
+
+      the component was incorrectly using the default `weight` parameter set in the
+      `__init__` method.
+
+      '
+  releasenotes/notes/fix-model_max_length-prompt_handler-7f34c40c62a8c55b.yaml:
+    fixes:
+    - 'Fix model_max_length not being set in the Tokenizer in DefaultPromptHandler.
+
+      '
+  releasenotes/notes/fix-openai-base-url-assignment-0570a494d88fe365.yaml:
+    fixes:
+    - 'Adds `api_base_url` attribute to `OpenAITExtEmbedder`.
+
+      Previously, it was used only for initialization and was not serialized.
+
+      '
+  releasenotes/notes/fix-pipeline-run-disorder-382da1e6bd6db510.yaml:
+    fixes:
+    - 'Fixes `Pipeline.run()` logic so Components that have all their inputs with
+      a default are run in the correct order.
+
+      This happened we gather a list of Components to run internally when running
+      the Pipeline in the order they are
+
+      added during creation of the Pipeline.
+
+      This caused some Components to run before they received all their inputs.
+
+      '
+  releasenotes/notes/fix-pipeline-run-loop-99f7ff9db16544d4.yaml:
+    fixes:
+    - 'Fix a bug when running a Pipeline that would cause it to get stuck in an infinite
+      loop
+
+      '
+  releasenotes/notes/fix-pypdf-serialization-93744fd01ef5b841.yaml:
+    preview:
+    - 'Make `PyPDFToDocument` accept a `converter_name` parameter instead of
+
+      a `converter` instance, to allow a smooth serialization of the component.
+
+      '
+  releasenotes/notes/fix-reader-top-k-b4f7e29be5ba5ee1.yaml:
+    preview:
+    - 'Update Reader documentation to explain that top_k+1 answers are returned if
+      no_answer is enabled (default).
+
+      '
+  releasenotes/notes/fix-splitter-cleaner-hash-key-3b6f042af7da9ab4.yaml:
+    preview:
+    - 'Fixed a bug that caused TextDocumentSplitter and DocumentCleaner to ignore
+      id_hash_keys and create Documents with duplicate ids if the documents differed
+      only in their metadata.
+
+      '
+  releasenotes/notes/fix-stop-words-criteria-check-order-bug-4badfcc021dfc92a.yaml:
+    fixes:
+    - 'Fix StopWordsCriteria not checking stop word tokens in a continuous and sequential
+      order
+
+      '
+  releasenotes/notes/fix-stop-words-strip-issue-22ce51306e7b91e4.yaml:
+    fixes:
+    - 'Ensure the leading whitespace in the generated text is preserved when using
+      `stop_words` in the Hugging Face invocation layer of the PromptNode.
+
+      '
+  releasenotes/notes/fix-text-splitter-65870db474338749.yaml:
+    preview:
+    - Fix TextDocumentSplitter failing when run with an empty list
+  releasenotes/notes/fix-transformersranker-single-doc-12448c3d7bc8dc6c.yaml:
+    fixes:
+    - Make `TransformersSimilarityRanker` run with a list containing a single document
+      as input.
+  releasenotes/notes/fix-version-47afaec913788a01.yaml:
+    fixes:
+    - 'Fix Deepstack imports failing when using local development environment that
+      doesn''t have `deepstack-ai` installed.
+
+      '
+  releasenotes/notes/fix-weaviate-date-fields-request-bottleneck-d9784b7e1044cacd.yaml:
+    fixes:
+    - 'Fixed a bottleneck in Weaviate document store which was slowing down the indexing.
+
+      '
+  releasenotes/notes/generators-module-261376beb9c031cc.yaml:
+    preview:
+    - Add generators module for LLM generator components.
+  releasenotes/notes/gpt4-llm-generator-60708087ec42211f.yaml:
+    preview:
+    - Adds `GPT4Generator`, an LLM component based on `GPT35Generator`
+  releasenotes/notes/gptgenerator-api-key-b9a648301a67bb37.yaml:
+    preview:
+    - 'Better management of API key in GPT Generator. The API key is never serialized.
+
+      Make the `api_base_url` parameter really used (previously it was ignored).
+
+      '
+  releasenotes/notes/hf-tei-bug-fix-07732c672600aadd.yaml:
+    fixes:
+    - 'Fixes `HuggingFaceTEITextEmbedder` returning an embedding of incorrect shape
+      when used with a
+
+      Text-Embedding-Inference endpoint deployed using Docker.
+
+      '
+  releasenotes/notes/hfapichatgenerator-51772e1f0d679b1c.yaml:
+    deprecations:
+    - 'Deprecate `HuggingFaceTGIChatGenerator`. This component will be removed in
+      Deepstack 2.3.0.
+
+      Use `HuggingFaceAPIChatGenerator` instead.
+
+      '
+    features:
+    - "Introduce `HuggingFaceAPIChatGenerator`.\nThis text-generation component uses\
+      \ the ChatMessage format and supports different Hugging Face APIs:\n  - free\
+      \ Serverless Inference API\n  - paid Inference Endpoints\n  - self-hosted Text\
+      \ Generation Inference.\n\nThis generator will replace the `HuggingFaceTGIChatGenerator`\
+      \ in the future.\n"
+  releasenotes/notes/hfapidocembedder-4c3970d002275edb.yaml:
+    deprecations:
+    - 'Deprecate `HuggingFaceTEIDocumentEmbedder`. This component will be removed
+      in Deepstack 2.3.0.
+
+      Use `HuggingFaceAPIDocumentEmbedder` instead.
+
+      '
+    features:
+    - "Introduce `HuggingFaceAPIDocumentEmbedder`.\nThis component can be used to\
+      \ compute Document embeddings using different Hugging Face APIs:\n  - free Serverless\
+      \ Inference API\n  - paid Inference Endpoints\n  - self-hosted Text Embeddings\
+      \ Inference.\nThis embedder will replace the `HuggingFaceTEIDocumentEmbedder`\
+      \ in the future.\n"
+  releasenotes/notes/hfapigenerator-3b1c353a4e8e4c55.yaml:
+    deprecations:
+    - 'Deprecate `HuggingFaceTGIGenerator`. This component will be removed in Deepstack
+      2.3.0.
+
+      Use `HuggingFaceAPIGenerator` instead.
+
+      '
+    features:
+    - "Introduce `HuggingFaceAPIGenerator`. This text-generation component supports\
+      \ different Hugging Face APIs:\n  - free Serverless Inference API\n  - paid\
+      \ Inference Endpoints\n  - self-hosted Text Generation Inference.\n\nThis generator\
+      \ will replace the `HuggingFaceTGIGenerator` in the future.\n"
+  releasenotes/notes/hfapitextembedder-97bf5f739f413f3e.yaml:
+    deprecations:
+    - 'Deprecate `HuggingFaceTEITextEmbedder`. This component will be removed in Deepstack
+      2.3.0.
+
+      Use `HuggingFaceAPITextEmbedder` instead.
+
+      '
+    features:
+    - "Introduce `HuggingFaceAPITextEmbedder`.\nThis component can be used to embed\
+      \ strings using different Hugging Face APIs:\n  - free Serverless Inference\
+      \ API\n  - paid Inference Endpoints\n  - self-hosted Text Embeddings Inference.\n\
+      This embedder will replace the `HuggingFaceTEITextEmbedder` in the future.\n"
+  releasenotes/notes/hflocalgenerator-generation-kwargs-in-run-2bde10d398a3712a.yaml:
+    preview:
+    - 'Allow passing `generation_kwargs` in the `run` method of the `HuggingFaceLocalGenerator`.
+
+      This makes this common operation faster.
+
+      '
+  releasenotes/notes/highlight-optional-conns-in-draw-cf107ee210b7b8e7.yaml:
+    enhancements:
+    - Highlight optional connections in the `Pipeline.draw()` output.
+  releasenotes/notes/htmlconverter-allow-extractor-customizability-730ae129db17327a.yaml:
+    enhancements:
+    - 'The `HTMLToDocument` converter now allows choosing the boilerpy3 extractor
+
+      to extract the content from the HTML document.
+
+      The default extractor has been changed to `DefaultExtractor`, which is better
+
+      for generic use cases than the previous default (`ArticleExtractor`).
+
+      '
+  releasenotes/notes/hugging-face-local-generator-a9a0ba011506f932.yaml:
+    preview:
+    - 'Add a minimal version of HuggingFaceLocalGenerator, a component that can run
+
+      Hugging Face models locally to generate text.
+
+      '
+  releasenotes/notes/hugging-face-local-generator-streaming-callback-38a77d37199f9672.yaml:
+    features:
+    - 'Adds ''streaming_callback'' parameter to ''HuggingFaceLocalGenerator'', allowing
+      users to handle streaming responses.
+
+      '
+  releasenotes/notes/hybrid_search_faq_pipeline.py-815df846dca7e872.yaml:
+    fixes:
+    - 'Added documents_store.update_embeddings call to pipeline examples so that embeddings
+      are calculated for newly added documents.
+
+      '
+  releasenotes/notes/implemeting-eval-results-API-25b2f8707495bea0.yaml:
+    features:
+    - 'Added a new EvaluationRunResult dataclass that wraps the results of an evaluation
+      pipeline,
+
+      allowing for its transformation and visualization.
+
+      '
+  releasenotes/notes/improve-hf-invocation-layer-tests-c42250d11d1d06c1.yaml:
+    enhancements:
+    - 'Minor PromptNode HFLocalInvocationLayer test improvements
+
+      '
+  releasenotes/notes/improve-link-content-fetcher-512d039e3c7684f1.yaml:
+    enhancements:
+    - 'Several minor enhancements for LinkContentFetcher:
+
+      - Dynamic content handler resolution
+
+      - Custom User-Agent header (optional, minimize blocking)
+
+      - PDF support
+
+      - Register new content handlers
+
+      '
+  releasenotes/notes/improve-pipeline-run-tracing-1d80aa7810df4205.yaml:
+    enhancements:
+    - 'Improved pipeline run tracing to include pipeline input/output data.
+
+      '
+  releasenotes/notes/inmemory-return-written-documents-488b7f90df84bc59.yaml:
+    preview:
+    - Make `InMemoryDocumentStore.write_documents()` return the number of docs actually
+      written
+  releasenotes/notes/inmemorybm25retriever-zero-score-docs-67406062a76aa7f4.yaml:
+    fixes:
+    - Prevent InMemoryBM25Retriever from returning documents with a score of 0.0.
+  releasenotes/notes/internal-logging-changes-a96533da55e309c3.yaml:
+    enhancements:
+    - 'Added a new `Logger` implementation which eases and enforces logging via key-word
+      arguments.
+
+      This is an internal change only. The behavior of instances created via `logging.getLogger`
+      is not affected.
+
+      '
+  releasenotes/notes/introduce-jsonschema-validator-65debc51a3b64975.yaml:
+    features:
+    - 'Introduced JsonSchemaValidator to validate the JSON content of ChatMessage
+      against a provided JSON schema. Valid messages are emitted through the ''validated''
+      output, while messages failing validation are sent via the ''validation_error''
+      output, along with useful error details for troubleshooting.
+
+      '
+  releasenotes/notes/issue-5616-convert-files-to-docs-list-f75a057249ba8992.yaml:
+    enhancements:
+    - "Add `list_of_paths` argument to `utils.convert_files_to_docs` to allow \ninput\
+      \ of list of file paths to be converted, instead of, or as well as, \nthe current\
+      \ `dir_path` argument.\n"
+  releasenotes/notes/language-router-logging-6afed7b6b8a7ae78.yaml:
+    security:
+    - 'Remove the text value from a warning log in the `TextLanguageRouter` to avoid
+      logging sensitive information.
+
+      The text can be still be shown by switching to the `debug` log level.
+
+
+      ```python
+
+      import logging
+
+
+      logging.basicConfig(format="%(levelname)s - %(name)s -  %(message)s", level=logging.WARNING)
+
+      logging.getLogger("deepstack").setLevel(logging.DEBUG)
+
+      ```
+
+      '
+  releasenotes/notes/lazy-import-v2-82902270867d9899.yaml:
+    preview:
+    - copy lazy_imports.py to preview
+  releasenotes/notes/link-content-include-snippet-if-blocked-53b0e3108f010315.yaml:
+    enhancements:
+    - 'If LinkContentFetcher encounters a block or receives any response code other
+      than HTTPStatus.OK, return the search
+
+      engine snippet as content, if it''s available.
+
+      '
+  releasenotes/notes/llmevaluator-0ae63b2b9715fb9b.yaml:
+    features:
+    - 'Add a new LLMEvaluator component that leverages LLMs through the OpenAI api
+      to evaluate pipelines.
+
+      '
+  releasenotes/notes/load-tokenizer-if-not-load-by-transformers-5841cdc9ff69bcc2.yaml:
+    enhancements:
+    - 'Allow loading Tokenizers for prompt models not natively supported by transformers
+      by setting `trust_remote_code` to `True`.
+
+      '
+  releasenotes/notes/log-trace-correlation-78bcf418718b24b4.yaml:
+    enhancements:
+    - "If using JSON logging in conjunction with tracing, Deepstack will automatically\
+      \ add correlation IDs to the logs.\nThis is done by getting the necessary information\
+      \ from the current span and adding it to the log record.\nYou can customize\
+      \ this by overriding the `get_correlation_data_for_logs` of your tracer's span:\n\
+      \n```python\nfrom deepstack.tracing import Span\n\nclass OpenTelemetrySpan(Span):\n\
+      \  ...\n\n  def get_correlation_data_for_logs(self) -> Dict[str, Any]:\n   \
+      \   span_context = ...\n      return {\"trace_id\": span_context.trace_id, \"\
+      span_id\": span_context.span_id}\n```\n"
+  releasenotes/notes/logging-tty-detection-8136769cb4d1da67.yaml:
+    enhancements:
+    - 'The `logging` module now detects if the standard output is a TTY. If it is
+      not and `structlog` is installed, it
+
+      will automatically disable the console renderer and log in JSON format. This
+      behavior can be overridden by setting
+
+      the environment variable `DEEPSTACK_LOGGING_USE_JSON` to `false`.
+
+      '
+  releasenotes/notes/make-urlcachechecker-generic-e159d40bbd943081.yaml:
+    enhancements:
+    - 'Improve the URLCacheChecker so that it can work with any type of data in the
+      DocumentStore, not just URL caching.
+
+      Rename the component to CacheChecker.
+
+      '
+  releasenotes/notes/max-loops-in-run-df9f5c068a723f71.yaml:
+    enhancements:
+    - 'Change `Pipeline.run()` to check if `max_loops_allowed` has been reached.
+
+      If we attempt to run a Component that already ran the number of `max_loops_allowed`
+      a `PipelineMaxLoops` will be raised.
+
+      '
+  releasenotes/notes/memory-embedding-retrieval-06f384baa04a63f7.yaml:
+    preview:
+    - 'Add `embedding_retrieval` method to `MemoryDocumentStore`,
+
+      which allows to retrieve the relevant Documents, given a query embedding.
+
+      It will be called by the `MemoryEmbeddingRetriever`.
+
+      '
+  releasenotes/notes/memory-embedding-retriever-dde22dedc83d1603.yaml:
+    preview:
+    - 'Rename `MemoryRetriever` to `MemoryBM25Retriever`
+
+      Add `MemoryEmbeddingRetriever`, which takes as input a query embedding and
+
+      retrieves the most relevant Documents from a `MemoryDocumentStore`.
+
+      '
+  releasenotes/notes/merge-hf-utils-modules-5c16e04025123568.yaml:
+    enhancements:
+    - 'Code from different "hf_utils.py" modules spread across different packages
+      was
+
+      merged into `deepstack.utils.hf`.
+
+      '
+  releasenotes/notes/merge-pipeline-definitions-1da80e9803e2a8bb.yaml:
+    enhancements:
+    - 'Merge `Pipeline`s definitions into a single `Pipeline` class.
+
+      The class in the `deepstack.pipeline` package has been deleted and only `deepstack.core.pipeline`
+      exists now.
+
+      '
+  releasenotes/notes/meta-in-bytestream-a29816c919c0be5a.yaml:
+    enhancements:
+    - Add meta parameter to `ByteStream.from_file_path()` and `ByteStream.from_string()`.
+  releasenotes/notes/metadata_enhancement_for_SQuAD_files-2247c72f07760465.yaml:
+    enhancements:
+    - 'Make it possible to load additional fields from the SQUAD format file into
+      the meta field of the Labels
+
+      '
+  releasenotes/notes/metafieldranker-meta-value-type-365ff1bdb412257b.yaml:
+    features:
+    - 'Add a new variable called meta_value_type to the MetaFieldRanker that allows
+      a user to parse the meta value into the data type specified as along as the
+      meta value is a string.
+
+      The supported values for meta_value_type are ''"float"'', ''"int"'', ''"date"'',
+      or ''None''. If None is passed then no parsing is done.
+
+      For example, if we specified meta_value_type="date" then for the meta value
+      "date": "2015-02-01" we would parse the string into a datetime object.
+
+      '
+  releasenotes/notes/metafieldranker_sort-order_refactor-2000d89dc40dc15a.yaml:
+    enhancements:
+    - 'Prevent the `MetaFieldRanker` from throwing an error if one or more of the
+      documents doesn''t contain the specific meta data field. Now those documents
+      will be ignored for ranking purposes and placed at the end of the ranked list
+      so we don''t completely throw them away.
+
+      Adding a sort_order that can have values of descending or ascending.
+
+      Added more runtime parameters.
+
+      '
+  releasenotes/notes/migrate-gpt-generator-for-chat-generator-b1edb394f3d6c9ef.yaml:
+    preview:
+    - 'Adds GPTChatGenerator, a chat-based OpenAI LLM component, ChatMessage(s) are
+      used for input and output
+
+      '
+  releasenotes/notes/migrate-remote-whisper-transcriber-to-openai-sdk-980ae6f54ddfd7df.yaml:
+    preview:
+    - 'Migrate RemoteWhisperTranscriber to OpenAI SDK.
+
+      '
+  releasenotes/notes/move-classifiers-943d9d52b4bfc49f.yaml:
+    preview:
+    - 'Move Text Language Classifier and Document Language Classifier to the
+
+      classifiers package.
+
+      '
+  releasenotes/notes/move-documentjoiner-to-joiners-7fe188d18d65ffcd.yaml:
+    enhancements:
+    - 'Create a new package called `joiners` and move `DocumentJoiner` there for clarity.
+
+      '
+    upgrade:
+    - "Change any occurrence of:\n    from deepstack.components.routers.document_joiner\
+      \ import DocumentJoiner\nto:\n    from deepstack.components.joiners.document_joiner\
+      \ import DocumentJoiner\n"
+  releasenotes/notes/multiplexer-a7b1259bd20c144c.yaml:
+    features:
+    - 'Add `Multiplexer`. For an example of its usage, see https://github.com/khulnasoft/deepstack/pull/6420.
+
+      '
+  releasenotes/notes/named-entity-extractor-component-8fd647ee748892ca.yaml:
+    features:
+    - 'Added a new extractor component, namely NamedEntityExtractor. This component
+      accepts a list of Documents as its input - the raw text in the documents are
+      annotated by the extractor and the annotations are stored in the document''s
+      meta dictionary (under the key named_entities).
+
+
+      The component is designed to support multiple NER backends, and the current
+      implementations support two at the moment: Hugging Face and spaCy. These two
+      backends implement support for any HF/spaCy model that supports token classification/NER
+      respectively.
+
+      '
+  releasenotes/notes/new-document-f7072e3f6d93e10f.yaml:
+    preview:
+    - Adds proposal for an extended Document class in Deepstack 2.0.
+    - Adds the implementation of said class.
+  releasenotes/notes/openai-document-embedder-d2f59ba1f21babcb.yaml:
+    preview:
+    - 'Add OpenAI Document Embedder.
+
+      It computes embeddings of Documents using OpenAI models.
+
+      The embedding of each Document is stored in the `embedding` field of the Document.
+
+      '
+  releasenotes/notes/openai-text-embedder-8f06cf0bf29e6752.yaml:
+    preview:
+    - 'Add OpenAI Text Embedder.
+
+      It is a component that uses OpenAI models to embed strings into vectors.
+
+      '
+  releasenotes/notes/openapi-connector-auth-enhancement-a78e0666d3cf6353.yaml:
+    enhancements:
+    - 'Enhanced the OpenAPIServiceConnector to support dynamic authentication handling.
+      With this update, service credentials are now dynamically provided at each run
+      invocation, eliminating the need for pre-configuring a known set of service
+      authentications. This flexibility allows for the introduction of new services
+      on-the-fly, each with its unique authentication, streamlining the integration
+      process. This modification not only simplifies the initial setup of the OpenAPIServiceConnector
+      but also ensures a more transparent and straightforward authentication process
+      for each interaction with different OpenAPI services.
+
+      '
+  releasenotes/notes/openapi-service-connector-enhancements-21a2bc0a9aab8966.yaml:
+    enhancements:
+    - 'Enhanced OpenAPI service connector to better handle method invocation with
+      support for security schemes, refined handling of method arguments including
+      URL/query parameters and request body, alongside improved error validation for
+      method calls. This update enables more versatile interactions with OpenAPI services,
+      ensuring compatibility with a wide range of API specifications.
+
+      '
+  releasenotes/notes/opentelemetry-tracer-33d44eb125a3145b.yaml:
+    features:
+    - "Added out-of-the-box support for the OpenTelemetry Tracer. This allows you\
+      \ to instrument pipeline and component\nruns using OpenTelemetry and send traces\
+      \ to your preferred backend.\n\nTo use the OpenTelemetry Tracer you need to\
+      \ have the `opentelemetry-sdk` package installed in your environment.\nTo instruct\
+      \ Deepstack to use the OpenTelemetry Tracer, you have multiple options:\n\n\
+      * Run your Deepstack application using the `opentelemetry-instrument` command\
+      \ line tool as described in the\n [OpenTelemetry documentation](https://opentelemetry.io/docs/languages/python/automatic/#configuring-the-agent).\n\
+      \  This behavior can be disabled by setting the `DEEPSTACK_AUTO_TRACE_ENABLED_ENV_VAR`\
+      \ environment variable to `false`.\n* Configure the tracer manually in your\
+      \ code using the `opentelemetry` package:\n  ```python\n  from opentelemetry\
+      \ import trace\n  from opentelemetry.exporter.otlp.proto.http.trace_exporter\
+      \ import OTLPSpanExporter\n  from opentelemetry.sdk.trace import TracerProvider\n\
+      \  from opentelemetry.sdk.trace.export import BatchSpanProcessor\n\n  # Service\
+      \ name is required for most backends\n  resource = Resource(attributes={\n \
+      \     SERVICE_NAME: \"deepstack\"\n  })\n\n  traceProvider = TracerProvider(resource=resource)\n\
+      \  processor = BatchSpanProcessor(OTLPSpanExporter(endpoint=\"http://localhost:4318/v1/traces\"\
+      ))\n  traceProvider.add_span_processor(processor)\n  trace.set_tracer_provider(traceProvider)\n\
+      \n  # Auto-configuration\n  import deepstack.tracing\n  deepstack.tracing.auto_enable_tracing()\n\
+      \n  # Or explicitly\n  from deepstack.tracing import OpenTelemetryTracer\n\n\
+      \  tracer = traceProvider.get_tracer(\"my_application\")\n  tracing.enable_tracing(OpenTelemetryTracer(tracer))\n\
+      \  ```\n"
+  releasenotes/notes/optimize-pinecone-document-store.yaml:
+    enhancements:
+    - 'Optimize particular methods from PineconeDocumentStore (delete_documents and
+      _get_vector_count)
+
+      '
+    upgrade:
+    - 'This update enables all Pinecone index types to be used, including Starter.
+
+      Previously, Pinecone Starter index type couldn''t be used as document store.
+      Due to limitations of this index type
+
+      (https://docs.pinecone.io/docs/starter-environment), in current implementation
+      fetching documents is limited to
+
+      Pinecone query vector limit (10000 vectors). Accordingly, if the number of documents
+      in the index is above this limit,
+
+      some of PineconeDocumentStore functions will be limited.
+
+      '
+  releasenotes/notes/pass-id-to-doc-init-c6b44d30978f2d9f.yaml:
+    preview:
+    - 'Revert #5826 and optionally take the `id` in the Document
+
+      class constructor.
+
+      '
+  releasenotes/notes/pin-typing-extensions-c4026f59603445b7.yaml:
+    fixes:
+    - 'Pin the `typing-extensions` package to versions >= 4.7 to avoid
+
+      [incompatibilities with the `openai` package](https://community.openai.com/t/error-while-importing-openai-from-open-import-openai/578166/26).
+
+      '
+  releasenotes/notes/pipe-disable-autoshow-dbbafd2bfdcce7a4.yaml:
+    enhancements:
+    - 'In Jupyter notebooks, the image of the Pipeline will no longer be displayed
+      automatically.
+
+      The textual representation of the Pipeline will be displayed.
+
+
+      To display the Pipeline image, use the `show` method of the Pipeline object.
+
+      '
+  releasenotes/notes/pipe-draw-transparent-bg-2e0c8ff586f8e70c.yaml:
+    fixes:
+    - 'Restore transparent background for images generated with Pipeline.draw and
+      Pipeline.show
+
+      '
+  releasenotes/notes/pipeline-deserialization-callbacks-0642248725918684.yaml:
+    enhancements:
+    - 'Add support for callbacks during pipeline deserialization. Currently supports
+      a pre-init hook for components that can be used to inspect and modify the initialization
+      parameters
+
+      before the invocation of the component''s `__init__` method.
+
+      '
+  releasenotes/notes/pipeline-intermediate-outputs-7cb8e71f79532ec1.yaml:
+    enhancements:
+    - '`pipeline.run` accepts a set of component names whose intermediate outputs
+      are returned in the final
+
+      pipeline output dictionary.
+
+      '
+  releasenotes/notes/pipeline-io-connected-sockets-db862d045944f788.yaml:
+    enhancements:
+    - '`Pipeline.inputs` and `Pipeline.outputs` can optionally include components
+      input/output sockets that are connected.
+
+      '
+  releasenotes/notes/pipeline-same-input-ref-different-components-68d74cb17b35f8db.yaml:
+    fixes:
+    - 'Previously, when using the same input reference in different components, the
+      Pipeline run logic had an
+
+      unexpected behavior. This has been fixed by deepcopying the inputs before passing
+      them to the components.
+
+      '
+  releasenotes/notes/pptx-file-converter-3e494d2747637eb2.yaml:
+    features:
+    - 'Add PptxConverter: a node to convert pptx files to Deepstack Documents.
+
+      '
+  releasenotes/notes/preprocessor-2-0-9828d930562fa3f5.yaml:
+    preview:
+    - 'Add the `TextDocumentSplitter` component for Deepstack 2.0 that splits a Document
+      with long text into multiple Documents with shorter texts. Thereby the texts
+      match the maximum length that the language models in Embedders or other components
+      can process.
+
+      '
+  releasenotes/notes/preview-extra-6dfdca55d17cbc7f.yaml:
+    preview:
+    - 'Create a dedicated dependency list for the preview package, `farm-deepstack[preview]`.
+
+      Using `deepstack-ai` is still the recommended way to test Deepstack 2.0.
+
+      '
+  releasenotes/notes/prompt-builder-d22954ef9c4a2a7b.yaml:
+    preview:
+    - Add PromptBuilder component to render prompts from template strings
+  releasenotes/notes/prompt-builder-default-value-95383dd6d17a05d5.yaml:
+    fixes:
+    - 'Fix `PromptBuilder` missing input default values.
+
+      These missing default value was causing the PromptBuilder to never run if certain
+      inputs are not received.
+
+      '
+  releasenotes/notes/pypdf-page-breaks-b6842d93f4c69185.yaml:
+    upgrade:
+    - 'Upgraded the default converter in PyPDFToDocument to insert page breaks "\f"
+
+      between each extracted page.
+
+      This allows for downstream components and applications to better be able to
+
+      keep track of the original PDF page a portion of text comes from.
+
+      '
+  releasenotes/notes/pypdf-refactoring-de869c91b42ce5b6.yaml:
+    deprecations:
+    - 'Using the `converter_name` parameter in the `PyPDFToDocument` component is
+      deprecated.
+
+      It will be removed in the 2.3.0 release.
+
+      Use the `converter` parameter instead.
+
+      '
+    enhancements:
+    - 'Refactor `PyPDFToDocument` to simplify support for custom PDF converters.
+
+      PDF converters are classes that implement the `PyPDFConverter` protocol and
+      have 3 methods:
+
+      `convert`, `to_dict` and `from_dict`.
+
+      The `DefaultConverter` class is provided as a default implementation.
+
+      '
+  releasenotes/notes/rag-e2e-test-rename-3e2c7265dbb6ba9e.yaml:
+    fixes:
+    - Fix `pytest` breaking in VSCode due to a name collision in the RAG pipeline
+      tests.
+  releasenotes/notes/rag_pipeline-4e9dfc82a4402935.yaml:
+    features:
+    - 'Add a `build_rag_pipeline` utility function
+
+      '
+  releasenotes/notes/ranker-prefix-bfaf09cd7da0852d.yaml:
+    enhancements:
+    - 'Add query and document prefix options for the TransformerSimilarityRanker
+
+      '
+  releasenotes/notes/recall-evaluator-5595470406e93ad2.yaml:
+    features:
+    - 'Add `DocumentRecallEvaluator`, a Component that can be used to calculate the
+      Recall single-hit or multi-hit
+
+      metric given a list of questions, a list of expected documents for each question
+      and the list of predicted
+
+      documents for each question.
+
+      '
+  releasenotes/notes/refactor-document-store-namespace-33f4433a2b121efc.yaml:
+    enhancements:
+    - 'Stop exposing `in_memory` package symbols in the `deepstack.document_store`
+      and
+
+      `deepstack.components.retrievers` root namespaces.
+
+      '
+    upgrade:
+    - "Change the imports for in_memory document store and retrievers from:\n\n  \
+      \  from deepstack.document_stores import InMemoryDocumentStore\n    from deepstack.components.retrievers\
+      \ import InMemoryEmbeddingRetriever\n\nto:\n\n    from deepstack.document_stores.in_memory\
+      \ import InMemoryDocumentStore\n    from deepstack.components.retrievers.in_memory\
+      \ import InMemoryBM25Retriever\n"
+  releasenotes/notes/refactor-generator-public-interface-b588e9f23778e0ee.yaml:
+    preview:
+    - "Improve the public interface of the Generators:\n  - make `generation_kwargs`\
+      \ a dictionary\n  - rename `pipeline_kwargs` (in `HuggingFaceLocalGenerator`)\
+      \ to `huggingface_pipeline_kwargs`\n"
+  releasenotes/notes/refactor-openai-document-embedder.yaml:
+    preview:
+    - 'Refactor OpenAIDocumentEmbedder to enrich documents with embeddings instead
+      of recreating them.
+
+      '
+  releasenotes/notes/refactor-pinecone-document-store.yaml:
+    enhancements:
+    - 'Refactor PineconeDocumentStore to use metadata instead of namespaces
+
+      for distinction between documents with embeddings, documents without
+
+      embeddings and labels
+
+      '
+  releasenotes/notes/refactor-sentense-transformers-document-embedder-f4ed8d10aaccd08c.yaml:
+    preview:
+    - 'Refactor SentenceTransformersDocumentEmbedder to enrich documents with embeddings
+      instead of recreating them.
+
+      '
+  releasenotes/notes/refactor-web-retriever-a0604ead72b84fdc.yaml:
+    enhancements:
+    - 'Refactor and simplify WebRetriever to use LinkContentFetcher component
+
+      '
+  releasenotes/notes/remotetranscriber-input-type-aae9a255435a3507.yaml:
+    preview:
+    - Extends input types of RemoteWhisperTranscriber from List[ByteStream] to List[Union[str,
+      Path, ByteStream]] to make possible to connect it to FileTypeRouter.
+  releasenotes/notes/remove-api-key-from-serialization-2474a1539b86e233.yaml:
+    preview:
+    - 'Remove "api_key" from serialization of AzureOCRDocumentConverter and SerperDevWebSearch.
+
+      '
+  releasenotes/notes/remove-base-test-component-ee1986a2bbbace46.yaml:
+    preview:
+    - Remove `BaseTestComponent` class used to test `Component`s
+  releasenotes/notes/remove-canals-mentions-eac7f95df99d39b9.yaml:
+    fixes:
+    - 'Remove all mentions of Canals by renaming some variables.
+
+      `__canals_input__` and `__canals_ouput__` have been renamed respectively to
+      `__deepstack_input__` and `__deepstack_ouput__`.
+
+      `CANALS_VARIADIC_ANNOTATION` has been renamed to `DEEPSTACK_VARIADIC_ANNOTATION`
+      and it''s value changed from `__canals__variadic_t` to `__deepstack__variadic_t`.
+
+      Default Pipeline `debug_path` has been changed from `.canals_debug` to `.deepstack_debug`.
+
+      '
+  releasenotes/notes/remove-default-from-dict-reimplementation-2db4c32153c1e7af.yaml:
+    preview:
+    - 'Removed implementations of from_dict and to_dict from all components where
+      they had the same effect as the default implementation from Canals: https://github.com/khulnasoft/canals/blob/main/canals/serialization.py#L12-L13
+      This refactoring does not change the behavior of the components.
+
+      '
+  releasenotes/notes/remove-document-array-fe70fd2cbb269add.yaml:
+    preview:
+    - 'Remove `array` field from `Document` dataclass.
+
+      '
+  releasenotes/notes/remove-document-store-aware-mixin-8eef714844ee04f2.yaml:
+    preview:
+    - Remove `DocumentStoreAwareMixin` as it's not necessary anymore
+  releasenotes/notes/remove-gptgenerator-8eced280d3b720d3.yaml:
+    upgrade:
+    - 'Removed the deprecated GPTGenerator and GPTChatGenerator components. Use OpenAIGenerator
+      and OpenAIChatGeneratornotes instead.
+
+      '
+  releasenotes/notes/remove-id-hash-document-93e4a589b3fd2aad.yaml:
+    preview:
+    - 'Remove `id_hash_keys` field from `Document` dataclass.
+
+      `id_hash_keys` has been also removed from Components that were using it:
+
+      * `DocumentCleaner`
+
+      * `TextDocumentSplitter`
+
+      * `PyPDFToDocument`
+
+      * `AzureOCRDocumentConverter`
+
+      * `HTMLToDocument`
+
+      * `TextFileToDocument`
+
+      * `TikaDocumentConverter`
+
+      '
+  releasenotes/notes/remove-image-from-debug-c83d61db92bcbfc2.yaml:
+    issues:
+    - 'Fix "TypeError: descriptor ''__dict__'' for ''XXX'' objects doesn''t apply
+      to a ''XXX'' object" when running
+
+      pipelines with `debug=True` by removing the graph image from the debug payload.
+
+      '
+  releasenotes/notes/remove-pipeline-c02067516c387f0b.yaml:
+    preview:
+    - Remove Pipeline specialisation to support DocumentStores.
+  releasenotes/notes/remove-query-param-MetaFieldRanker-56883ab0377b7605.yaml:
+    preview:
+    - 'Removes the unused query parameter from the run method of MetaFieldRanker.
+
+      '
+  releasenotes/notes/remove-serialization-from-telemetry-a054f7f26f277d2b.yaml:
+    fixes:
+    - 'Fix telemetry code that could cause a ValueError by trying to serialize a pipeline.
+
+      Telemetry code does not serialize pipelines anymore.
+
+      '
+  releasenotes/notes/remove-sklearnqueryclassifier-a95382808d99cb58.yaml:
+    upgrade:
+    - 'SklearnQueryClassifier is removed and users should switch to the more powerful
+      TransformersQueryClassifier instead. https://github.com/khulnasoft/deepstack/discussions/5447
+
+      '
+  releasenotes/notes/remove-template-vars-invocation-kwargs-060f186fd1250fe4.yaml:
+    enhancements:
+    - 'Remove template variables from invocation layer kwargs
+
+      '
+    upgrade:
+    - 'This update impacts only those who have created custom invocation layers by
+      subclassing PromptModelInvocationLayer.
+
+      Previously, the invoke() method in your custom layer received all prompt template
+      parameters (like query,
+
+      documents, etc.) as keyword arguments. With this change, these parameters will
+      no longer be passed in as keyword
+
+      arguments. If you''ve implemented such a custom layer, you''ll need to potentially
+      update your code to accommodate
+
+      this change.
+
+      '
+  releasenotes/notes/rename-confidence-score-3ba604b8f9bd0454.yaml:
+    enhancements:
+    - 'Renamed the confidence_threshold parameter of the ExtractiveReader to score_threshold
+      as ExtractedAnswers have a score and this is what the threshold is for.
+
+      For consistency, the term confidence is not mentioned anymore in favor of score.
+
+      '
+  releasenotes/notes/rename-connect-arguments-2d99d9d5cbe9ab4c.yaml:
+    features:
+    - 'Rename `Pipeline.connect()` arguments for clarity
+
+      '
+    upgrade:
+    - '`Pipeline.connect()` arguments have renamed for clarity. This is a breaking
+      change if `connect` was called
+
+      with keyword arguments only.
+
+      `connect_from` and `connect_to` arguments have been renamed respectively to
+      `sender` and `receiver`.
+
+      The behaviour of `Pipeline.connect()` is not changed.
+
+      '
+  releasenotes/notes/rename-file-extension-router-9125028ec2c55e98.yaml:
+    preview:
+    - 'Enhanced file routing capabilities with the introduction of `ByteStream` handling,
+      and
+
+      improved clarity by renaming the router to `FileTypeRouter`.
+
+      '
+  releasenotes/notes/rename-gpt-generators-f25011d251fafd6d.yaml:
+    deprecations:
+    - 'Deprecate GPTGenerator and GPTChatGenerator. Replace them with OpenAIGenerator
+      and OpenAIChatGenerator.
+
+      '
+  releasenotes/notes/rename-memory-doc-store-2a9960d11d2aa492.yaml:
+    preview:
+    - 'Rename `MemoryDocumentStore` to `InMemoryDocumentStore`
+
+      Rename `MemoryBM25Retriever` to `InMemoryBM25Retriever`
+
+      Rename `MemoryEmbeddingRetriever` to `InMemoryEmbeddingRetriever`
+
+      '
+  releasenotes/notes/rename-model-param--transcribers-71dbe7cfb86950e0.yaml:
+    upgrade:
+    - 'Rename the transcriber parameters `model_name` and `model_name_or_path` to
+      `model`. This change affects both
+
+      `LocalWhisperTranscriber` and `RemoteWhisperTranscriber` classes.
+
+      '
+  releasenotes/notes/rename-model-param-embedders-7cc87a768554724d.yaml:
+    upgrade:
+    - Rename the embedder parameters `model_name` and `model_name_or_path` to `model`.
+      This change affects all Embedder classes.
+  releasenotes/notes/rename-model-param-ner-dce7536f2e7866fe.yaml:
+    upgrade:
+    - Rename `model_name_or_path` to `model` in `NamedEntityExtractor`.
+  releasenotes/notes/rename-model-param-rankers-be3d6163597e0a9b.yaml:
+    upgrade:
+    - Rename `model_name_or_path` to `model` in `TransformersSimilarityRanker`.
+  releasenotes/notes/rename-model-param-reader-b8cbb0d638e3b8c2.yaml:
+    upgrade:
+    - Rename parameter `model_name_or_path` to `model` in `ExtractiveReader`.
+  releasenotes/notes/rename-reader-input-af739955bf4f71b5.yaml:
+    preview:
+    - 'Renamed ExtractiveReader''s input from `document` to `documents` to match its
+      type List[Document].
+
+      '
+  releasenotes/notes/rename-streaming-callback-f4e6653c0aac8765.yaml:
+    enhancements:
+    - 'The default in `default_streaming_callback` was confusing, this function was
+      the go-to-helper
+
+      one would use to quickly print the generated tokens as they come, but it was
+      not used by default.
+
+      The function was then renamed to `print_streaming_chunk.`
+
+      '
+    upgrade: null
+  releasenotes/notes/rename-text-document-splitter-1e9fcd292c4591dd.yaml:
+    preview:
+    - 'rename `TextDocumentSplitter` to `DocumentSplitter`, to allow a better
+
+      distinction between Components that operate on text and those that operate
+
+      on Documents.
+
+      '
+  releasenotes/notes/rename_similarity_ranker-d755c2cd00449ecc.yaml:
+    preview:
+    - 'Rename `SimilarityRanker` to `TransformersSimilarityRanker`,
+
+      as there will be more similarity rankers in the future.
+
+      '
+  releasenotes/notes/renamed-model_name-or-model_name_or_path-to-model-184490cbb66c4d7c.yaml:
+    upgrade:
+    - Rename the generator parameters `model_name` and `model_name_or_path` to `model`.
+      This change affects all Generator classes.
+  releasenotes/notes/restrict-openai-supports-method-fb126583e4beb057.yaml:
+    fixes:
+    - 'Restricts the criteria for identifying an OpenAI model in the PromptNode and
+      in the EmbeddingRetriever.
+
+      Previously, the criteria were quite loose, leading to more false positives.
+
+      '
+  releasenotes/notes/review-all-extras-42d5a3a3d61f5393.yaml:
+    upgrade:
+    - 'Removes the `audio`, `ray`, `onnx` and `beir` extras from the extra group `all`.
+
+      '
+  releasenotes/notes/rework-document-writer-4958db2024070f6f.yaml:
+    features:
+    - Rework `DocumentWriter` to remove `DocumentStoreAwareMixin`. Now we require
+      a generic `DocumentStore` when initialisating the writer.
+  releasenotes/notes/rework-filters-1bb103d196a1912b.yaml:
+    prelude: "With proposal [#6001](https://github.com/khulnasoft/deepstack/pull/6001)\
+      \ we introduced a better specification to declare filters in Deepstack 2.x.\
+      \ The new syntax is a bit more verbose but less confusing and ambiguous as there\
+      \ are no implicit operators. This will simplify conversion from this common\
+      \ syntax to a Document Store specific filtering logic, so it will ease development\
+      \ of new Document Store. Since everything must be declared explicitly it will\
+      \ also make it easier for user to understand the filters just by reading them.\n\
+      The full specification is as follow.\n---\nFilters top level must be a dictionary.\n\
+      There are two types of dictionaries:\n- Comparison - Logic\nTop level can be\
+      \ either be a Comparison or Logic dictionary.\nComparison dictionaries must\
+      \ contain the keys:\n- `field` - `operator` - `value`\nLogic dictionaries must\
+      \ contain the keys:\n- `operator` - `conditions`\n`conditions` key must be a\
+      \ list of dictionaries, either Comparison or Logic.\n`operator` values in Comparison\
+      \ dictionaries must be:\n- `==` - `!=` - `>` - `>=` - `<` - `<=` - `in` - `not\
+      \ in`\n`operator` values in Logic dictionaries must be:\n- `NOT` - `OR` - `AND`\n\
+      ---\nA simple filter:\n```python filters = {\"field\": \"meta.type\", \"operator\"\
+      : \"==\", \"value\": \"article\"} ```\nA more complex filter: ```python filters\
+      \ = {\n    \"operator\": \"AND\",\n    \"conditions\": [\n        {\"field\"\
+      : \"meta.type\", \"operator\": \"==\", \"value\": \"article\"},\n        {\"\
+      field\": \"meta.date\", \"operator\": \">=\", \"value\": 1420066800},\n    \
+      \    {\"field\": \"meta.date\", \"operator\": \"<\", \"value\": 1609455600},\n\
+      \        {\"field\": \"meta.rating\", \"operator\": \">=\", \"value\": 3},\n\
+      \        {\n            \"operator\": \"OR\",\n            \"conditions\": [\n\
+      \                {\"field\": \"meta.genre\", \"operator\": \"in\", \"value\"\
+      : [\"economy\", \"politics\"]},\n                {\"field\": \"meta.publisher\"\
+      , \"operator\": \"==\", \"value\": \"nytimes\"},\n            ],\n        },\n\
+      \    ],\n} ```\n---\nTo avoid causing too much disruption for users using legacy\
+      \ filters we'll keep supporting them for the time being. We also provide a utility\
+      \ `convert` function for developers implementing their Document Store to do\
+      \ the same.\n"
+    preview:
+    - 'Refactored `InMemoryDocumentStore` and `MetadataRouter` filtering logic to
+      support new filters declaration.
+
+      '
+  releasenotes/notes/rework-memory-retriever-73c5d3221bd96759.yaml:
+    features:
+    - Rework `MemoryRetriever` to remove `DocumentStoreAwareMixin`. Now we require
+      a `MemoryDocumentStore` when initialisating the retriever.
+  releasenotes/notes/rm-docstore-decorator-d8d2ebfdf1d9702e.yaml:
+    enhancements:
+    - 'Improve the deserialization logic for components that use a Document Store.
+
+      Remove the @document_store decorator and the registry of Document Stores.
+
+      '
+  releasenotes/notes/route-meta-to-converters-ed85acc43b5aa96a.yaml:
+    enhancements:
+    - Add example script about how to use Multiplexer to route meta to file converters.
+  releasenotes/notes/run-greedy-fix-6d4559126e7739ce.yaml:
+    fixes:
+    - 'Fix `Pipeline.run()` mistakenly running a Component before it should.
+
+      This can happen when a greedy variadic Component must be executed before a
+
+      Component with default inputs.
+
+      '
+  releasenotes/notes/sas-evaluator-6970865787557e83.yaml:
+    features:
+    - 'Add SASEvaluator, it can be used to calculate Semantic Answer Similarity of
+      generated answers from an LLM
+
+      '
+  releasenotes/notes/sas-evaluator-7858ea6c38f80bc7.yaml:
+    features:
+    - 'Add `SASEvaluator`, this Component can be used to calculate the Semantic Answer
+      Similarity of answers returned by LLMs.
+
+      '
+  releasenotes/notes/scale-score-false-h2-3c8e4e7e543e8cce.yaml:
+    preview:
+    - 'Change the default value of `scale_score` to False for Retrievers.
+
+      Users can still explicitly set `scale_score` to True to get relevance
+
+      scores in the range [0, 1].
+
+      '
+  releasenotes/notes/scale-score-similarity-ranker-2deacff999265b9e.yaml:
+    enhancements:
+    - 'Adds scale_score, which allows users to toggle if they would like their document
+      scores to be raw logits or scaled between 0 and 1 (using the sigmoid function).
+      This is a feature that already existed in Deepstack v1 that is being moved over.
+
+      Adds calibration_factor. This follows the example from the ExtractiveReader
+      which allows the user to better control the spread of scores when scaling the
+      score using sigmoid.
+
+      Adds score_threshold. Also copied from the ExtractiveReader. This optionally
+      allows users to set a score threshold where only documents with a score above
+      this threshold are returned.
+
+      '
+  releasenotes/notes/secret-handling-for-components-d576a28135a224db.yaml:
+    features:
+    - "Expose a `Secret` type to provide consistent API for any component that requires\
+      \ secrets for authentication.\nCurrently supports string tokens and environment\
+      \ variables. Token-based secrets are automatically\nprevented from being serialized\
+      \ to disk (to prevent accidental leakage of secrets).\n```python\n@component\n\
+      class MyComponent:\n  def __init__(self, api_key: Optional[Secret] = None, **kwargs):\n\
+      \    self.api_key = api_key\n    self.backend = None\n\n  def warm_up(self):\n\
+      \    # Call resolve_value to yield a single result. The semantics of the result\
+      \ is policy-dependent.\n    # Currently, all supported policies will return\
+      \ a single string token.\n    self.backend = SomeBackend(api_key=self.api_key.resolve_value()\
+      \ if self.api_key else None, ...)\n\n  def to_dict(self):\n    # Serialize the\
+      \ policy like any other (custom) data. If the policy is token-based, it will\n\
+      \    # raise an error.\n    return default_to_dict(self, api_key=self.api_key.to_dict()\
+      \ if self.api_key else None, ...)\n\n  @classmethod\n  def from_dict(cls, data):\n\
+      \    # Deserialize the policy data before passing it to the generic from_dict\
+      \ function.\n    api_key_data = data[\"init_parameters\"][\"api_key\"]\n   \
+      \ api_key = Secret.from_dict(api_key_data) if api_key_data is not None else\
+      \ None\n    data[\"init_parameters\"][\"api_key\"] = api_key\n    return default_from_dict(cls,\
+      \ data)\n\n# No authentication.\ncomponent = MyComponent(api_key=None)\n# Token\
+      \ based authentication\ncomponent = MyComponent(api_key=Secret.from_token(\"\
+      sk-randomAPIkeyasdsa32ekasd32e\"))\ncomponent.to_dict() # Error! Can't serialize\
+      \ authentication tokens\n# Environment variable based authentication\ncomponent\
+      \ = MyComponent(api_key=Secret.from_env(\"OPENAI_API_KEY\"))\ncomponent.to_dict()\
+      \ # This is fine\n```\n"
+  releasenotes/notes/self-correcting-rag-2e77ac94b89dfe5b.yaml:
+    enhancements:
+    - Add RAG self correction loop example
+  releasenotes/notes/sentence-transformers-doc-embedder-prefix-suffix-442412c553135406.yaml:
+    preview:
+    - 'Add `prefix` and `suffix` attributes to `SentenceTransformersDocumentEmbedder`.
+
+      They can be used to add a prefix and suffix to the Document text before
+
+      embedding it. This is necessary to take full advantage of modern embedding
+
+      models, such as E5.
+
+      '
+  releasenotes/notes/sentence-transformers-embedders-new-devices-mgmt-07cb59c6b4a13280.yaml:
+    upgrade:
+    - 'Adopt the new framework-agnostic device management in Sentence Transformers
+      Embedders.
+
+
+      Before this change:
+
+      ```python
+
+      from deepstack.components.embedders import SentenceTransformersTextEmbedder
+
+      embedder = SentenceTransformersTextEmbedder(device="cuda:0")
+
+      ```
+
+
+      After this change:
+
+      ```python
+
+      from deepstack.utils.device import ComponentDevice, Device
+
+      from deepstack.components.embedders import SentenceTransformersTextEmbedder
+
+      device = ComponentDevice.from_single(Device.gpu(id=0))
+
+      # or
+
+      # device = ComponentDevice.from_str("cuda:0")
+
+      embedder = SentenceTransformersTextEmbedder(device=device)
+
+      ```
+
+      '
+  releasenotes/notes/sentence-transformers-embedding-backend-69bd9410ede08c8f.yaml:
+    preview:
+    - 'Add Sentence Transformers Embedding Backend.
+
+      It will be used by Embedder components and is responsible for computing embeddings.
+
+      '
+  releasenotes/notes/separate-classifiers-from-routers-96a37c76820385d6.yaml:
+    preview:
+    - 'Remove routing functionality from DocumentLanguageClassifier and rename TextLanguageClassifer
+      to TextLanguageRouter.
+
+      Classifiers in Deepstack 2.x change metadata values but do not route inputs
+      to multiple outputs. The latter is reserved for routers.
+
+      Use DocumentLanguageClassifier in combination with MetaDataRouter to classify
+      and route documents in indexing pipelines.
+
+      '
+  releasenotes/notes/serialize-torch-dtype-57c6c94f6114fc00.yaml:
+    fixes:
+    - 'Correctly handle the serialization and deserialization of torch.dtype.
+
+      This concerns the following components:
+
+      ExtractiveReader, HuggingFaceLocalGenerator, and TransformersSimilarityRanker.
+
+      '
+  releasenotes/notes/set-input-type-328589ee51ffa21b.yaml:
+    features:
+    - 'Add `component.set_input_type()` function to set a Component input name, type
+      and default value.
+
+      '
+  releasenotes/notes/ship-boilerpy3-0bffbd7955c89dd4.yaml:
+    enhancements:
+    - 'Include ''boilerpy3'' in the ''deepstack-ai'' dependencies.
+
+      '
+  releasenotes/notes/simplify-textfiletodocument-c9d2fb7ed2c848ed.yaml:
+    preview:
+    - Remove most parameters from TextFileToDocument to make it match all other converters.
+    - Add support for ByteStreams
+  releasenotes/notes/simplify-whisper-installation-1e347e2527cbf913.yaml:
+    enhancements:
+    - 'Upgraded openai-whisper to version 20231106 and simplified installation through
+      re-introduced audio extra.
+
+      The latest openai-whisper version unpins its tiktoken dependency, which resolved
+      a version conflict with Deepstack''s dependencies.
+
+      '
+  releasenotes/notes/single-meta-in-azureconverter-ce1cc196a9b161f3.yaml:
+    enhancements:
+    - 'Adds support for single metadata dictionary input in `AzureOCRDocumentConverter`.
+      In this way, additional metadata can be added to all files processed by this
+      component even when the length of the list of sources is unknown.
+
+      '
+  releasenotes/notes/single-meta-in-htm2document-199ea44a4ae5c02b.yaml:
+    enhancements:
+    - 'Adds support for single metadata dictionary input in `HTMLToDocument`.
+
+      '
+  releasenotes/notes/single-meta-in-markdown2document-082bae7b20bd605d.yaml:
+    features:
+    - 'Adds support for single metadata dictionary input in `MarkdownToDocument``.
+
+      '
+  releasenotes/notes/single-meta-in-pypdf2document-99e15f1cb9f65892.yaml:
+    enhancements:
+    - 'Adds support for single metadata dictionary input in `PyPDFToDocument`.
+
+      '
+  releasenotes/notes/single-meta-in-tikaconverter-89b454c451a2ed93.yaml:
+    features:
+    - 'Adds support for single metadata dictionary input in `TikaDocumentConverter`.
+
+      '
+  releasenotes/notes/single-metadata-txt-converter-a02bf90c60262701.yaml:
+    features:
+    - 'Adds support for single metadata dictionary input in `TextFileToDocument``.
+
+      '
+  releasenotes/notes/sparse-emb-eq-773ef04ae3ed83ea.yaml:
+    enhancements:
+    - 'Add an `__eq__` method to `SparseEmbedding` class to compare two `SparseEmbedding`
+      objects.
+
+      '
+  releasenotes/notes/sparse-embedding-fd55b670437492be.yaml:
+    features:
+    - 'Introduce a new `SparseEmbedding` class which can be used to store a sparse
+
+      vector representation of a Document.
+
+      It will be instrumental to support Sparse Embedding Retrieval with
+
+      the subsequent introduction of Sparse Embedders and Sparse Embedding Retrievers.
+
+      '
+  releasenotes/notes/speedup-import-b542f7a8323ef376.yaml:
+    enhancements:
+    - 'Speed up import of Document dataclass.
+
+      Importing Document was slowed down cause we were importing the whole `pandas`
+      and `numpy` packages.
+
+      This has now been changed to import only the necessary classes and functions.
+
+      '
+  releasenotes/notes/split-by-token-b9a4f954d4077ecc.yaml:
+    features:
+    - Add `split_length` by token in PreProcessor
+  releasenotes/notes/split-dynamic-prompt-builder-798e5a74caf7a2e8.yaml:
+    enhancements:
+    - 'Split DynamicPromptBuilder into DynamicPromptBuilder and DynamicChatPromptBuilder
+
+      '
+  releasenotes/notes/statistical-evaluator-d65b80e3ac24778a.yaml:
+    features:
+    - 'Add `StatisticalEvaluator`, this Component can be used to calculate the different
+      statistic metrics from answers returned by LLMs.
+
+      '
+  releasenotes/notes/stop-using-canals-bfc26ad25e472652.yaml:
+    enhancements:
+    - 'Use the code formerly in `canals` from the `deepstack.core` package across
+      the whole codebase.
+
+      '
+    upgrade:
+    - 'Any import from `canals` should be rewritten to import from `deepstack.core`
+
+      '
+  releasenotes/notes/stopwords-hf-generator-dab4b5827bae1492.yaml:
+    preview:
+    - 'Allow specifying stopwords to stop text generation for `HuggingFaceLocalGenerator`.
+
+      '
+  releasenotes/notes/store-factory-91e7da46aeb7ff21.yaml:
+    preview:
+    - 'Add utility function `store_class` factory to create `Store`s for testing purposes.
+
+      '
+  releasenotes/notes/stores-serialisation-a09398d158b01ae6.yaml:
+    preview:
+    - Add `from_dict` and `to_dict` methods to `Store` `Protocol`
+    - Add default `from_dict` and `to_dict` implementations to classes decorated with
+      `@store`
+  releasenotes/notes/structured-logging-2d6cef3fee2b4f0e.yaml:
+    features:
+    - "Deepstack now supports structured logging out-of-the box.\nLogging can be separated\
+      \ into 3 categories:\n- If [`structlog`](https://www.structlog.org/en/stable/)\
+      \ is not installed, Deepstack will\n  use the standard Python logging library\
+      \ with whatever configuration is present.\n- If `structlog` is installed, Deepstack\
+      \ will log through [`structlog`](https://www.structlog.org/en/stable/) using\n\
+      \  structlog's console renderer.\n  To disable structlog, set the environment\
+      \ variable `DEEPSTACK_LOGGING_IGNORE_STRUCTLOG_ENV_VAR` to `true`.\n- To log\
+      \ in JSON, install [`structlog`](https://www.structlog.org/en/stable/) and\n\
+      \  - set the environment variable `DEEPSTACK_LOGGING_JSON` to `true` or\n  -\
+      \ enable JSON logging from Python\n    ```python\n    import deepstack.logging\n\
+      \n    deepstack.logging.configure_logging(use_json=True)\n    ```\n"
+  releasenotes/notes/support-azure-3.5-gpt-16k-model-ece0cfe03260748c.yaml:
+    fixes:
+    - 'gpt-35-turbo-16k model from Azure can integrate correctly
+
+      '
+  releasenotes/notes/support-dates-in-filters-2.0-15785cc3776d2210.yaml:
+    preview:
+    - 'Add support for dates in filters.
+
+      '
+  releasenotes/notes/support-gpt-3.5-turbo-instruct-79236835a8be143c.yaml:
+    enhancements:
+    - 'Support OpenAI''s new `gpt-3.5-turbo-instruct` model
+
+      '
+  releasenotes/notes/support-gpt-4-1106-preview-ce8e551b11d96471.yaml:
+    enhancements:
+    - Add new token limit for gpt-4-1106-preview model
+  releasenotes/notes/switch-bm25-dep-9b9d1c596f5ff4d0.yaml:
+    enhancements:
+    - 'Depend on our own rank_bm25 fork.
+
+      '
+  releasenotes/notes/telemetry-2.0-92c34c81563ff0e1.yaml:
+    preview:
+    - Add basic telemetry to Deepstack 2.0 pipelines
+  releasenotes/notes/text-cleaner-eee0eecbdec21427.yaml:
+    features:
+    - 'Add `TextCleaner` Component to clean list of strings. It can remove substrings
+      matching a list of regular expressions,
+
+      convert text to lowercase, remove punctuation, and remove numbers.
+
+      This is mostly useful to clean generator predictions before evaluation.
+
+      '
+  releasenotes/notes/text-document-cleaner-8afce831a2ac31ae.yaml:
+    preview:
+    - 'Added DocumentCleaner, which removes extra whitespace, empty lines, headers,
+      etc. from Documents containing text.
+
+      Useful as a preprocessing step before splitting into shorter text documents.
+
+      '
+  releasenotes/notes/text-language-classifier-0d1e1a97f1bb8ac6.yaml:
+    preview:
+    - 'Add TextLanguageClassifier component so that an input string, for example a
+      query, can be routed to different components based on the detected language.
+
+      '
+  releasenotes/notes/textfile-to-document-v2-341987623765ec95.yaml:
+    preview:
+    - 'Add new TextFileToDocument component to Deepstack v2 preview so that text files
+      can be converted to Deepstack Documents.
+
+      '
+  releasenotes/notes/tgi-chat-missing-decorator-799b2a133ee4708c.yaml:
+    fixes:
+    - 'Add the `@component` decorator to `HuggingFaceTGIChatGenerator`.
+
+      The lack of this decorator made it impossible to use the `HuggingFaceTGIChatGenerator`
+      in a pipeline.
+
+      '
+  releasenotes/notes/transformers-4-35-2-1739bbaa8c6f0111.yaml:
+    enhancements:
+    - 'Upgrade Transformers to the latest version 4.35.2
+
+      This version adds support for DistilWhisper, Fuyu, Kosmos-2, SeamlessM4T, Owl-v2.
+
+      '
+  releasenotes/notes/transformers-similarity-embed-meta-7f2b15988549f805.yaml:
+    enhancements:
+    - 'Add meta_fields_to_embed following the implementation in SentenceTransformersDocumentEmbedder
+      to be able to
+
+      embed meta fields along with the content of the document.
+
+      '
+  releasenotes/notes/transformers-similarity-update-53a840b31bac4c3d.yaml:
+    enhancements:
+    - 'Add new variable model_kwargs to the TransformersSimilarityRanker so we can
+      pass different loading options supported by
+
+      HuggingFace. Add device availability checking if the user passes in None to
+      the device init param. Ranking goes, GPU, MPS, CPU.
+
+      '
+  releasenotes/notes/update-crawler-selenium-4.11-30fec9f6e345834f.yaml:
+    fixes:
+    - 'Make the Crawler work properly with Selenium>=4.11.0.
+
+      Simplify the Crawler, as the new version of Selenium automatically finds or
+      installs the necessary drivers.
+
+      '
+  releasenotes/notes/update-deepset-cloud-sdk-save-pipeline-config-ff820838846f5f38.yaml:
+    enhancements:
+    - 'Update the khulnasoft Cloud SDK to the new endpoint format for new saving pipeline
+      configs.
+
+      '
+  releasenotes/notes/update-openai-chat-tools-3d3636b2ffea9736.yaml:
+    enhancements:
+    - 'Update OpenAIChatGenerator to handle both tools and functions calling. OpenAIChatGenerator
+      now supports both tools
+
+      and functions `generation_kwargs` parameters that enable function/tools invocation.
+
+      '
+  releasenotes/notes/update-searchapi-new-format-74d8794a8a6f5581.yaml:
+    fixes:
+    - 'Updated the SearchApiWebSearch component with new search format and allowed
+      users to specify the search engine via the `engine`
+
+      parameter in `search_params`. The default search engine is Google, making it
+      easier for users to tailor their web searches.
+
+      '
+  releasenotes/notes/update-secret-handling-in-components-925d4f3c3c9530db.yaml:
+    upgrade:
+    - 'Update secret handling for components using the `Secret` type. The following
+      components are affected:
+
+      `RemoteWhisperTranscriber`, `AzureOCRDocumentConverter`, `AzureOpenAIDocumentEmbedder`,
+      `AzureOpenAITextEmbedder`, `HuggingFaceTEIDocumentEmbedder`, `HuggingFaceTEITextEmbedder`,
+      `OpenAIDocumentEmbedder`, `SentenceTransformersDocumentEmbedder`, `SentenceTransformersTextEmbedder`,
+      `AzureOpenAIGenerator`, `AzureOpenAIChatGenerator`, `HuggingFaceLocalChatGenerator`,
+      `HuggingFaceTGIChatGenerator`, `OpenAIChatGenerator`, `HuggingFaceLocalGenerator`,
+      `HuggingFaceTGIGenerator`, `OpenAIGenerator`, `TransformersSimilarityRanker`,
+      `SearchApiWebSearch`, `SerperDevWebSearch`
+
+
+      The default init parameters for `api_key`, `token`, `azure_ad_token` have been
+      adjusted to use environment variables wherever possible. The `azure_ad_token_provider`
+      parameter has been removed from Azure-based components. Components based on
+      Hugging
+
+      Face are now required to either use a token or an environment variable if authentication
+      is required - The on-disk local token file is no longer supported.
+
+      '
+  releasenotes/notes/update-secret-management-extractive-reader-4a8ce8df1f2705f8.yaml:
+    upgrade:
+    - 'Update secret handling for the `ExtractiveReader` component using the `Secret`
+      type.
+
+
+      The default init parameter `token` is now required to either use a token or
+      the environment `HF_API_TOKEN` variable
+
+      if authentication is required - The on-disk local token file is no longer supported.
+
+      '
+  releasenotes/notes/update-supported-cohere-models-68f17fa70051fc90.yaml:
+    enhancements:
+    - 'Add alias names for Cohere embed models for an easier map between names
+
+      '
+    fixes:
+    - 'Remove unsupported `medium` and `finance-sentiment` models from supported Cohere
+      embed model list
+
+      '
+  releasenotes/notes/updated-ranking-mode-in-meta-field-ranker-d1f1304cc422b202.yaml:
+    fixes:
+    - 'Fixed a bug in the `MetaFieldRanker`: when the `ranking_mode` parameter was
+      overridden in the `run` method,
+
+      the component was incorrectly using the `ranking_mode` parameter set in the
+      `__init__` method.
+
+      '
+  releasenotes/notes/upgrade-canals-0-9-0-2bed4670885e998b.yaml:
+    preview:
+    - 'Upgrade canals to 0.9.0 to support variadic inputs for Joiner components and
+      "/" in connection names like "text/plain"
+
+      '
+  releasenotes/notes/upgrade-huggingface-hub-dependency-9b8a89d50eb88fea.yaml:
+    upgrade:
+    - 'Upgraded the required version of `huggingface_hub` to `>=0.23.0` across various
+      modules to ensure compatibility and leverage the latest features. This update
+      includes modifications to error handling for token generation details and introduces
+      adjustments in the chat and text generation interfaces to enhance functionality
+      and developer experience. Users are advised to upgrade their `huggingface_hub`
+      dependency.
+
+      '
+  releasenotes/notes/upgrade-openai-client-15fda68fc769f95b.yaml:
+    enhancements:
+    - 'Upgrade to OpenAI client version 1.x
+
+      '
+  releasenotes/notes/upgrade-tgi-to-new-hf-hub-51fcb3b6122fe020.yaml:
+    upgrade:
+    - 'The `HuggingFaceTGIGenerator` and `HuggingFaceTGIChatGenerator` components
+      have been modified to be compatible with
+
+      `huggingface_hub>=0.22.0`.
+
+
+      If you use these components, you may need to upgrade the `huggingface_hub` library.
+
+      To do this, run the following command in your environment:
+
+      ```bash
+
+      pip install "huggingface_hub>=0.22.0"
+
+      ```
+
+      '
+  releasenotes/notes/upgrade-tiktoken-0.5.1-3cea9bf90fddb2f2.yaml:
+    fixes:
+    - Upgrades tiktoken to 0.5.1 to account for a breaking release.
+  releasenotes/notes/url-cache-checker-a0fb3d7ad0bdb8c2.yaml:
+    preview:
+    - 'Add `UrlCacheChecker` to support Web retrieval pipelines.
+
+      Check if documents coming from a given list of URLs are already present in the
+      store and if so, returns them.
+
+      All URLs with no matching documents are returned on a separate connection.
+
+      '
+  releasenotes/notes/web-retriever-add-domain-scoping-6594425e0c0ace3c.yaml:
+    features:
+    - 'Introduced `allowed_domains` parameter in `WebRetriever` for domain-specific
+      searches,
+
+      thus enabling "talk to a website" and "talk to docs" scenarios.
+
+      '
+  releasenotes/notes/web-retriever-allow-custom-link-content-fetcher-8728141d81d7a5e5.yaml:
+    enhancements:
+    - 'Allow WebRetriever users to specify a custom LinkContentFetcher instance
+
+      '
+  releasenotes/notes/weights-normalize-docjoin-rrf-v2-9cad33012fe90a55.yaml:
+    enhancements:
+    - 'Introduces weighted score normalization for the DocumentJoiner''s reciprocal
+      rank fusion, enhancing the relevance of document sorting by allowing customizable
+      influence on the final scores
+
+      '
+  releasenotes/notes/whisper-loc-new-devices-0665a24cd92ee4b6.yaml:
+    upgrade:
+    - 'Adopt the new framework-agnostic device management in Local Whisper Transcriber.
+
+
+      Before this change:
+
+      ```python
+
+      from deepstack.components.audio import LocalWhisperTranscriber
+
+
+      transcriber = LocalWhisperTranscriber(device="cuda:0")
+
+      ```
+
+
+      After this change:
+
+      ```python
+
+      from deepstack.utils.device import ComponentDevice, Device
+
+      from deepstack.components.audio import LocalWhisperTranscriber
+
+
+      device = ComponentDevice.from_single(Device.gpu(id=0))
+
+      # or
+
+      # device = ComponentDevice.from_str("cuda:0")
+
+
+      transcriber = LocalWhisperTranscriber(device=device)
+
+      ```
+
+      '
+  releasenotes/notes/zero-shot-text-router-f5090589e652197c.yaml:
+    features:
+    - 'Add a Zero Shot Text Router that uses an NLI model from HF to classify texts
+      based on a set of provided labels and routes them based on the label they were
+      classified with.
+
+      '
+notes:
+- files:
+  - - releasenotes/notes/AnalyzeResult-forward-declaration-5ed1bd9b6dc62c6f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/adapt-gpt-generator-bb7f52bd67f6b197.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-CohereGenerator-ca55e5b8e46df754.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-MarkdownToTextDocument-f97ec6c5fb35527d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-TEI-embedders-8c76593bc25a7219.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-answerbuilder-2.0-5dd255eeba68041f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-apple-silicon-gpu-acceleration-38bf69781a933b95.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-azure-embedders-fd5f4fbcab0e1c48.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-azure-generators-a30c786204b22e48.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-azure_ocr_doc_converter-935130b3b243d236.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-batch_size_faiss_init-5e97c1fb9409f873.yaml
+    - !!binary |
+      YzFmYTBmNWYxMTZiNTY3ZTMzZjY4YzI5YzkxMTQ1YmI5ZjRhNmQ4ZQ==
+  - - releasenotes/notes/add-blob-type-2a9476a39841f54d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-calculate-metrics-metricsresults-03bf27ce8b16cff5.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-chat-message-c456e4603529ae85.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-custom-converter-hook-to-pypdf-cc7c333a6e7fc5f7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-default-value-to-input-socket-2e62116fc4be5214.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-dimensions-parameter-azureopeaniembedders-ef48fcc7c064b45c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-dimensions-parameter-to-OpenAI-Embedders-to-fully-support-the-new-models-1393cc235e457733.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-diversity-ranker-6ecee21134eda673.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-document-writer-number-of-documents-written-2c57f3a5d6ae2131.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-dynamic-per-message-templating-908468226c5e3d45.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-dynamic-prompt-builder-e61c4b11405b8d80.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-eval-and-evaluation-result-5e9ac742e323bda8.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-exact-match-a7df21717238b771.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-f1-d54cc900bec753f7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-file-extension-classifier-preview-40f31c27bbd7cff9.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-filter-retriever-8901af26144d1a17.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-hf-free-tier-checks-99384060139d5d30.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-html-to-document-21fe38b244388f4d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-hugging-face-chat-local-5fe7a88e24fde11b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-huggingface-tgi-chat-c63f4879a5d81342.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-huggingface-tgi-generator-9d7eed86f5246ea9.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-indexing-ready-made-pipeline-85c1da2f8f910f9d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-link-content-fetcher-145915976f38e1e0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-lost-in-the-middle-ranker-6ad7dda754fad5a9.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-lost-in-the-middle-ranker-976f2e9bf83c3c68.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-markdown-file-type-router-support-39a607faa5c1436f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-metadata-HTMLToDocument-42dbd074a46c979e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-metadata-field-ranker-a8afd5bf15f29a0a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-metadata_router-2.0-63829ac5a0528e9d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-model-kwargs-extractive-reader-c0b65ab34572408f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-most-diverse-ranker-21cf310be4554551.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-mrr-metric-362527e55e21c24c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-new-rankers-schema-generation-7ad92fd5c5de8937.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-on_agent_final_answer_to_agent_base-7798ea8de2f43af0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-openai-async-1f65701142f77181.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-output-adapter-5fab4cfcb0218925.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-page-number-to-answer-1b6d68dc93508314.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-page-number-to-document-splitter-162e9dc7443575f0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-pdfminer-converter-f08f68e38ef82f4a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-pipeline-templates-831f857c6387f8c3.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-promptnode-arun-bc4c2bcc9c653015.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-pypdf-to-document-converter-4a39c29abc4da7ba.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-rag-openapi-services-f3e377c49ff0f258.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-reno-e284cb173ab45ab3.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-required-flag-for-prompt-builder-inputs-f5d3ffb3cb7df8d0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-router-f1f0cec79b1efe9a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-sas-b8dbf61c0d78ba19.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-search_engine_kwargs-to-web-retriever-67fac44ef0039b7f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-searchapi-integration-bb9130485c3c9429.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-sentence-transformers-document-embedder-f1e8612b8eaf9b7f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-sentence-transformers-text-embedder-2ce0de6f7a1149e1.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-serper-dev-8c582749728e3699.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-similarity-ranker-401bf595cea7318a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-skip-prompt-for-hf-model-agent-89aef2838edb907c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-split-by-page-to-DocumentSplitter-63232c17d858d787.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-streaming-chunk-67897d7cb2c0d7c0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-tikaconverter-2.0-ef637f93114e6c96.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-timeout-arg-to-promptnode-de11f17733344052.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-top-p-sampler-ad6e0f5d623a6bb5.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-truncate-normalize-tei-6c998b14154267bb.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-trust-remote-code-feature-c133b2b245d2ea7a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-v2-answer-class-31bc8d3116922594.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-v2-extractive-reader-a2158d38781803ec.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/add-yaml-marshaller-030e889f46484573.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/adjust-max-new-tokens-to-512-in-huggingface-generators-76d9aba116b65e70.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/adjust-web-retriever-caching-logic-2e05fbc972a86f29.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/adopt-hf-token-770edaccf6278ad9.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/allow-connecting-same-components-again-e63cf719b9bf2a14.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/allow-simplified-pipeline-run-input-e3dd98ff38f0bc01.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/answer-refactoring-b617afa946311ac8.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/async-pipeline-20649b54ecff2706.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/azure-ocr-converter-enhancements-c882456cad9a5efc.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/bedrock-support-bce28e3078c85c12.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/better-doc-repr-6d35de1cf4b25697.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/better-error-FileExtensionClassifier-4defc51ed116c2a2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/bump-transformers-to-4-32-1-5b800ceff440b871.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/bump-transformers-to-4-32-341a42ff09796725.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/bump-transformers-to-4-34-38d045d8e42ea0a2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/byte-stream-mime-type-b060e96791c4993a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/cache_checker_output_type-0b05e75ca41aab61.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/canals-0.10.0-bfa4020a8cf207c4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/canals-0.4.0-b69b19069c4a9e0f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/change-import-paths-3d4eae690412e545.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/change-localwhispertranscriber-run-3b0a818060867720.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/change-metadata-to-meta-0fada93f04628c79.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/changed-metadata-to-meta-64cceb9ed19722fe.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/chat-with-website-template-23bec121f1a78726.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/chatgpt-llm-generator-d043532654efe684.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/check-id-hash-keys-postinit-28b012cdeada2c1e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/code-instrumentation-9ef657728bec3508.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/codespell-d4a32b9c589ca26e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/complex-types-openapi-support-84d3daf8927ad915.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/component-greedy-d6630af901e96a4c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/component-kw-only-run-args-eedee8907232d2d4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/component-repr-a6486af81530bc3b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/components-reuse-ccc5f2d4b9d7f9ff.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/connect-return-pipeline-dcc1e0786b19861e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/content-tracing-25df3909e11924b1.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/context-relevance-04063b9dc9fe7379.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/converters-allow-passing-meta-70fb498b6eb80468.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/converters-standardize-inputs-ed2ba9c97b762974.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/custom-query-dynamic-filters-dd83ec358d2f64a6.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/datadog-tracer-b084cf64fcc575c6.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/deepset-cloud-document-store-search-fields-40b2322466f808a3.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/default-to-from-dict-7f7d89b6c36e2ab8.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/default-write-documents-policy-95afe5fb34fc73ad.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/delete-old-eval-api-d83b3b0c83f847f3.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/deprecate-openai-answergenerator-537266612ba1ffff.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/device-management-eed64f411c48fbc7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/device-map-2ced24b510e45774.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/diversity-ranker-add-topk-24f23136f316129a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/doc-id-rework-85e82b5359282f7e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-backward-compatible-07c4151e98ef8511.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-blob-ae28734c5be561d9.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-embedding-type-d66c44ac6878fbdd.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-equality-4bc1b5273bd5b7f1.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-joiner-2-126bd60c84be6efa.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-language-classifier-1ec0b3c4d08989c0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-map-evaluator-de896c94b54fe3fa.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-metadata-to-meta-8564aa3c045bb526.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-mrr-evaluator-fa7c266cc91201a7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-store-testing-c1a8050f06ff3e97.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-text-to-content-39b5439480af5c41.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-writer-default-policy-693027781629fc73.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/document-writer-v2-bbe0a62b3066f9cf.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/dynamic-chat-prompt-templating-enhancement-e8d36cbf3be46da7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/embedding-instructions-4feb216cbf796678.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/enable-set-max-length-during-runtime-097d65e537bf800b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/enable_pass_use_fast_to_transformers-b5fdf14d69aa58ec.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/enhance-inmemorydocumentstore-bm25-incremental-indexing-ebaf43b7163f3a24.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/enhance-pipeline-draw-5fe3131db71f6f54.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/enhance-repr-0c5efa1e2ca6bafa.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/enhanced-htmltodocument-content-extraction-229d63e7c7119807.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/exact-match-evaluator-197bb87b65e19d0c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/extend-write-documents-855ffc315974f03b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/extract_type_serialization-fc3ea6418ba5632d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/extractive-qa-answer-dedup-7ca3b94b79b38854.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/extractive-reader-invalid-ans-a88e6b1d1ee897aa.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/faithfulness-evaluator-2e039a697c847d1c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/feature-regex-mime-type-support-36381e74f593eb84.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/file-classifier-add-media-files-support-e970524f726dd844.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/filters-converter-485cd24cf38407d0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-chatgpt-invocation-layer-bc25d0ea5f77f05c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-component-type-checking-issues-8eefa1157ffc3eba.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-components-autocompletion-a2d87708309262b6.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-connect-with-same-name-5ce470f7f0451362.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-descriptor-__dict__-doesnt-apply-to-bf6d47872345ed24.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-document-constructor-18b9e5dd9522a918.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-document-flatten-metadata-ef61dbbae08b1db7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-document-init-09c1cbb14202be7d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-document-store-in-test-3640b8b079ff4539.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-e2e-test-preprocessing-7b24f848e074c48a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-embedders-docs-examples-72119352572012d7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-entityextractor-json-serialzable-b7d643eb83a3e58c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-issue-#5485-efa4486a414ce584.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-join-docs-null-score-746c392a87adffcc.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-joinDocuments-concatenate-56a7cdba00a7248e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-logger-reserved-attributes-9e4d4920c1e41a62.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-metafieldranker-weight-in-run-66ce13191e596214.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-metafieldranker-weight-in-run-method-e4e11011a8b99c34.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-model_max_length-prompt_handler-7f34c40c62a8c55b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-openai-base-url-assignment-0570a494d88fe365.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-pipeline-run-disorder-382da1e6bd6db510.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-pipeline-run-loop-99f7ff9db16544d4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-pypdf-serialization-93744fd01ef5b841.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-reader-top-k-b4f7e29be5ba5ee1.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-splitter-cleaner-hash-key-3b6f042af7da9ab4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-stop-words-criteria-check-order-bug-4badfcc021dfc92a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-stop-words-strip-issue-22ce51306e7b91e4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-text-splitter-65870db474338749.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-transformersranker-single-doc-12448c3d7bc8dc6c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-version-47afaec913788a01.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/fix-weaviate-date-fields-request-bottleneck-d9784b7e1044cacd.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/generators-module-261376beb9c031cc.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/gpt4-llm-generator-60708087ec42211f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/gptgenerator-api-key-b9a648301a67bb37.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hf-tei-bug-fix-07732c672600aadd.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hfapichatgenerator-51772e1f0d679b1c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hfapidocembedder-4c3970d002275edb.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hfapigenerator-3b1c353a4e8e4c55.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hfapitextembedder-97bf5f739f413f3e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hflocalgenerator-generation-kwargs-in-run-2bde10d398a3712a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/highlight-optional-conns-in-draw-cf107ee210b7b8e7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/htmlconverter-allow-extractor-customizability-730ae129db17327a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hugging-face-local-generator-a9a0ba011506f932.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hugging-face-local-generator-streaming-callback-38a77d37199f9672.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/hybrid_search_faq_pipeline.py-815df846dca7e872.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/implemeting-eval-results-API-25b2f8707495bea0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/improve-hf-invocation-layer-tests-c42250d11d1d06c1.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/improve-link-content-fetcher-512d039e3c7684f1.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/improve-pipeline-run-tracing-1d80aa7810df4205.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/inmemory-return-written-documents-488b7f90df84bc59.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/inmemorybm25retriever-zero-score-docs-67406062a76aa7f4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/internal-logging-changes-a96533da55e309c3.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/introduce-jsonschema-validator-65debc51a3b64975.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/issue-5616-convert-files-to-docs-list-f75a057249ba8992.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/language-router-logging-6afed7b6b8a7ae78.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/lazy-import-v2-82902270867d9899.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/link-content-include-snippet-if-blocked-53b0e3108f010315.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/llmevaluator-0ae63b2b9715fb9b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/load-tokenizer-if-not-load-by-transformers-5841cdc9ff69bcc2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/log-trace-correlation-78bcf418718b24b4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/logging-tty-detection-8136769cb4d1da67.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/make-urlcachechecker-generic-e159d40bbd943081.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/max-loops-in-run-df9f5c068a723f71.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/memory-embedding-retrieval-06f384baa04a63f7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/memory-embedding-retriever-dde22dedc83d1603.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/merge-hf-utils-modules-5c16e04025123568.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/merge-pipeline-definitions-1da80e9803e2a8bb.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/meta-in-bytestream-a29816c919c0be5a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/metadata_enhancement_for_SQuAD_files-2247c72f07760465.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/metafieldranker-meta-value-type-365ff1bdb412257b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/metafieldranker_sort-order_refactor-2000d89dc40dc15a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/migrate-gpt-generator-for-chat-generator-b1edb394f3d6c9ef.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/migrate-remote-whisper-transcriber-to-openai-sdk-980ae6f54ddfd7df.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/move-classifiers-943d9d52b4bfc49f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/move-documentjoiner-to-joiners-7fe188d18d65ffcd.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/multiplexer-a7b1259bd20c144c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/named-entity-extractor-component-8fd647ee748892ca.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/new-document-f7072e3f6d93e10f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/openai-document-embedder-d2f59ba1f21babcb.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/openai-text-embedder-8f06cf0bf29e6752.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/openapi-connector-auth-enhancement-a78e0666d3cf6353.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/openapi-service-connector-enhancements-21a2bc0a9aab8966.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/opentelemetry-tracer-33d44eb125a3145b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/optimize-pinecone-document-store.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pass-id-to-doc-init-c6b44d30978f2d9f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pin-typing-extensions-c4026f59603445b7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pipe-disable-autoshow-dbbafd2bfdcce7a4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pipe-draw-transparent-bg-2e0c8ff586f8e70c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pipeline-deserialization-callbacks-0642248725918684.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pipeline-intermediate-outputs-7cb8e71f79532ec1.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pipeline-io-connected-sockets-db862d045944f788.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pipeline-same-input-ref-different-components-68d74cb17b35f8db.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pptx-file-converter-3e494d2747637eb2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/preprocessor-2-0-9828d930562fa3f5.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/preview-extra-6dfdca55d17cbc7f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/prompt-builder-d22954ef9c4a2a7b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/prompt-builder-default-value-95383dd6d17a05d5.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pypdf-page-breaks-b6842d93f4c69185.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/pypdf-refactoring-de869c91b42ce5b6.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rag-e2e-test-rename-3e2c7265dbb6ba9e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rag_pipeline-4e9dfc82a4402935.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/ranker-prefix-bfaf09cd7da0852d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/recall-evaluator-5595470406e93ad2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/refactor-document-store-namespace-33f4433a2b121efc.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/refactor-generator-public-interface-b588e9f23778e0ee.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/refactor-openai-document-embedder.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/refactor-pinecone-document-store.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/refactor-sentense-transformers-document-embedder-f4ed8d10aaccd08c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/refactor-web-retriever-a0604ead72b84fdc.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remotetranscriber-input-type-aae9a255435a3507.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-api-key-from-serialization-2474a1539b86e233.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-base-test-component-ee1986a2bbbace46.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-canals-mentions-eac7f95df99d39b9.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-default-from-dict-reimplementation-2db4c32153c1e7af.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-document-array-fe70fd2cbb269add.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-document-store-aware-mixin-8eef714844ee04f2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-gptgenerator-8eced280d3b720d3.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-id-hash-document-93e4a589b3fd2aad.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-image-from-debug-c83d61db92bcbfc2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-pipeline-c02067516c387f0b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-query-param-MetaFieldRanker-56883ab0377b7605.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-serialization-from-telemetry-a054f7f26f277d2b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-sklearnqueryclassifier-a95382808d99cb58.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/remove-template-vars-invocation-kwargs-060f186fd1250fe4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-confidence-score-3ba604b8f9bd0454.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-connect-arguments-2d99d9d5cbe9ab4c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-file-extension-router-9125028ec2c55e98.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-gpt-generators-f25011d251fafd6d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-memory-doc-store-2a9960d11d2aa492.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-model-param--transcribers-71dbe7cfb86950e0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-model-param-embedders-7cc87a768554724d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-model-param-ner-dce7536f2e7866fe.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-model-param-rankers-be3d6163597e0a9b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-model-param-reader-b8cbb0d638e3b8c2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-reader-input-af739955bf4f71b5.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-streaming-callback-f4e6653c0aac8765.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename-text-document-splitter-1e9fcd292c4591dd.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rename_similarity_ranker-d755c2cd00449ecc.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/renamed-model_name-or-model_name_or_path-to-model-184490cbb66c4d7c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/restrict-openai-supports-method-fb126583e4beb057.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/review-all-extras-42d5a3a3d61f5393.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rework-document-writer-4958db2024070f6f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rework-filters-1bb103d196a1912b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rework-memory-retriever-73c5d3221bd96759.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/rm-docstore-decorator-d8d2ebfdf1d9702e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/route-meta-to-converters-ed85acc43b5aa96a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/run-greedy-fix-6d4559126e7739ce.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/sas-evaluator-6970865787557e83.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/sas-evaluator-7858ea6c38f80bc7.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/scale-score-false-h2-3c8e4e7e543e8cce.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/scale-score-similarity-ranker-2deacff999265b9e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/secret-handling-for-components-d576a28135a224db.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/self-correcting-rag-2e77ac94b89dfe5b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/sentence-transformers-doc-embedder-prefix-suffix-442412c553135406.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/sentence-transformers-embedders-new-devices-mgmt-07cb59c6b4a13280.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/sentence-transformers-embedding-backend-69bd9410ede08c8f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/separate-classifiers-from-routers-96a37c76820385d6.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/serialize-torch-dtype-57c6c94f6114fc00.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/set-input-type-328589ee51ffa21b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/ship-boilerpy3-0bffbd7955c89dd4.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/simplify-textfiletodocument-c9d2fb7ed2c848ed.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/simplify-whisper-installation-1e347e2527cbf913.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/single-meta-in-azureconverter-ce1cc196a9b161f3.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/single-meta-in-htm2document-199ea44a4ae5c02b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/single-meta-in-markdown2document-082bae7b20bd605d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/single-meta-in-pypdf2document-99e15f1cb9f65892.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/single-meta-in-tikaconverter-89b454c451a2ed93.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/single-metadata-txt-converter-a02bf90c60262701.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/sparse-emb-eq-773ef04ae3ed83ea.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/sparse-embedding-fd55b670437492be.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/speedup-import-b542f7a8323ef376.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/split-by-token-b9a4f954d4077ecc.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/split-dynamic-prompt-builder-798e5a74caf7a2e8.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/statistical-evaluator-d65b80e3ac24778a.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/stop-using-canals-bfc26ad25e472652.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/stopwords-hf-generator-dab4b5827bae1492.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/store-factory-91e7da46aeb7ff21.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/stores-serialisation-a09398d158b01ae6.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/structured-logging-2d6cef3fee2b4f0e.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/support-azure-3.5-gpt-16k-model-ece0cfe03260748c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/support-dates-in-filters-2.0-15785cc3776d2210.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/support-gpt-3.5-turbo-instruct-79236835a8be143c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/support-gpt-4-1106-preview-ce8e551b11d96471.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/switch-bm25-dep-9b9d1c596f5ff4d0.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/telemetry-2.0-92c34c81563ff0e1.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/text-cleaner-eee0eecbdec21427.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/text-document-cleaner-8afce831a2ac31ae.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/text-language-classifier-0d1e1a97f1bb8ac6.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/textfile-to-document-v2-341987623765ec95.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/tgi-chat-missing-decorator-799b2a133ee4708c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/transformers-4-35-2-1739bbaa8c6f0111.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/transformers-similarity-embed-meta-7f2b15988549f805.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/transformers-similarity-update-53a840b31bac4c3d.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/update-crawler-selenium-4.11-30fec9f6e345834f.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/update-deepset-cloud-sdk-save-pipeline-config-ff820838846f5f38.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/update-openai-chat-tools-3d3636b2ffea9736.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/update-searchapi-new-format-74d8794a8a6f5581.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/update-secret-handling-in-components-925d4f3c3c9530db.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/update-secret-management-extractive-reader-4a8ce8df1f2705f8.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/update-supported-cohere-models-68f17fa70051fc90.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/updated-ranking-mode-in-meta-field-ranker-d1f1304cc422b202.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/upgrade-canals-0-9-0-2bed4670885e998b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/upgrade-huggingface-hub-dependency-9b8a89d50eb88fea.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/upgrade-openai-client-15fda68fc769f95b.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/upgrade-tgi-to-new-hf-hub-51fcb3b6122fe020.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/upgrade-tiktoken-0.5.1-3cea9bf90fddb2f2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/url-cache-checker-a0fb3d7ad0bdb8c2.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/web-retriever-add-domain-scoping-6594425e0c0ace3c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/web-retriever-allow-custom-link-content-fetcher-8728141d81d7a5e5.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/weights-normalize-docjoin-rrf-v2-9cad33012fe90a55.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/whisper-loc-new-devices-0665a24cd92ee4b6.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  - - releasenotes/notes/zero-shot-text-router-f5090589e652197c.yaml
+    - !!binary |
+      N2NhMzc2NmNiZTZjMzc0ZWFiM2MzNWI4YzI1YzY4ZDFlMTZmZjgyMg==
+  version: 0.0.0
