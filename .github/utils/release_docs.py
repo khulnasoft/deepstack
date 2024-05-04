@@ -1,10 +1,10 @@
+import argparse
+import base64
 import os
 import re
 import sys
-import base64
-import argparse
-import requests
 
+import requests
 
 VERSION_VALIDATOR = re.compile(r"^[0-9]+\.[0-9]+$")
 

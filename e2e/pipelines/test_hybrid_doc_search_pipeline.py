@@ -1,12 +1,12 @@
 import json
 
-from deepstack import Pipeline, Document
-from deepstack.components.embedders import SentenceTransformersTextEmbedder, SentenceTransformersDocumentEmbedder
-from deepstack.components.rankers import TransformersSimilarityRanker
+from deepstack import Document, Pipeline
+from deepstack.components.embedders import SentenceTransformersDocumentEmbedder, SentenceTransformersTextEmbedder
 from deepstack.components.joiners.document_joiner import DocumentJoiner
+from deepstack.components.rankers import TransformersSimilarityRanker
+from deepstack.components.retrievers.in_memory import InMemoryBM25Retriever, InMemoryEmbeddingRetriever
 from deepstack.document_stores.in_memory import InMemoryDocumentStore
 from deepstack.document_stores.types import DuplicatePolicy
-from deepstack.components.retrievers.in_memory import InMemoryBM25Retriever, InMemoryEmbeddingRetriever
 
 
 def test_hybrid_doc_search_pipeline(tmp_path):

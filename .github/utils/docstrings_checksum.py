@@ -1,8 +1,7 @@
-from pathlib import Path
-from typing import Iterator
-
 import ast
 import hashlib
+from pathlib import Path
+from typing import Iterator
 
 
 def docstrings_checksum(python_files: Iterator[Path]):

@@ -1,9 +1,9 @@
 import json
 
-from deepstack import Pipeline, Document
-from deepstack.document_stores.in_memory import InMemoryDocumentStore
-from deepstack.components.retrievers.in_memory import InMemoryBM25Retriever
+from deepstack import Document, Pipeline
 from deepstack.components.readers import ExtractiveReader
+from deepstack.components.retrievers.in_memory import InMemoryBM25Retriever
+from deepstack.document_stores.in_memory import InMemoryDocumentStore
 
 
 def test_extractive_qa_pipeline(tmp_path):

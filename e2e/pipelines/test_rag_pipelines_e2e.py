@@ -1,15 +1,16 @@
-import os
 import json
+import os
+
 import pytest
 
-from deepstack import Pipeline, Document
-from deepstack.document_stores.in_memory import InMemoryDocumentStore
-from deepstack.components.writers import DocumentWriter
-from deepstack.components.retrievers.in_memory import InMemoryBM25Retriever, InMemoryEmbeddingRetriever
-from deepstack.components.embedders import SentenceTransformersTextEmbedder, SentenceTransformersDocumentEmbedder
-from deepstack.components.generators import OpenAIGenerator
+from deepstack import Document, Pipeline
 from deepstack.components.builders.answer_builder import AnswerBuilder
 from deepstack.components.builders.prompt_builder import PromptBuilder
+from deepstack.components.embedders import SentenceTransformersDocumentEmbedder, SentenceTransformersTextEmbedder
+from deepstack.components.generators import OpenAIGenerator
+from deepstack.components.retrievers.in_memory import InMemoryBM25Retriever, InMemoryEmbeddingRetriever
+from deepstack.components.writers import DocumentWriter
+from deepstack.document_stores.in_memory import InMemoryDocumentStore
 
 
 @pytest.mark.skipif(

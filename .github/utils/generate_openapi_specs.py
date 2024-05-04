@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
 import json
-from pathlib import Path
+import logging
 import os
 import sys
-
-import logging
+from pathlib import Path
 
 logging.basicConfig(level=logging.INFO)
 
 
 sys.path.append(".")
-from rest_api.utils import get_openapi_specs, get_app, get_pipelines  # pylint: disable=wrong-import-position
+from rest_api.utils import get_app, get_openapi_specs, get_pipelines  # pylint: disable=wrong-import-position
+
 from deepstack import __version__  # pylint: disable=wrong-import-position
 
 REST_PATH = Path("./rest_api/rest_api").absolute()

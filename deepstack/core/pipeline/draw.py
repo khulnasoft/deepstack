@@ -22,9 +22,9 @@ def _prepare_for_drawing(graph: networkx.MultiDiGraph) -> networkx.MultiDiGraph:
     """
     # Label the edges
     for inp, outp, key, data in graph.edges(keys=True, data=True):
-        data["label"] = (
-            f"{data['from_socket'].name} -> {data['to_socket'].name}{' (opt.)' if not data['mandatory'] else ''}"
-        )
+        data[
+            "label"
+        ] = f"{data['from_socket'].name} -> {data['to_socket'].name}{' (opt.)' if not data['mandatory'] else ''}"
         graph.add_edge(inp, outp, key=key, **data)
 
     # Add inputs fake node

@@ -1,10 +1,10 @@
 import json
 
 from deepstack import Pipeline
-from deepstack.components.embedders import SentenceTransformersDocumentEmbedder
-from deepstack.components.converters import TextFileToDocument
-from deepstack.components.preprocessors import DocumentSplitter, DocumentCleaner
 from deepstack.components.classifiers import DocumentLanguageClassifier
+from deepstack.components.converters import TextFileToDocument
+from deepstack.components.embedders import SentenceTransformersDocumentEmbedder
+from deepstack.components.preprocessors import DocumentCleaner, DocumentSplitter
 from deepstack.components.routers import FileTypeRouter, MetadataRouter
 from deepstack.components.writers import DocumentWriter
 from deepstack.document_stores.in_memory import InMemoryDocumentStore

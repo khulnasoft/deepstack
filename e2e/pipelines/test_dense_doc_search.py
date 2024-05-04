@@ -1,14 +1,14 @@
 import json
 
 from deepstack import Pipeline
-from deepstack.components.embedders import SentenceTransformersDocumentEmbedder, SentenceTransformersTextEmbedder
 from deepstack.components.converters import PyPDFToDocument, TextFileToDocument
-from deepstack.components.preprocessors import DocumentCleaner, DocumentSplitter
-from deepstack.components.routers import FileTypeRouter
+from deepstack.components.embedders import SentenceTransformersDocumentEmbedder, SentenceTransformersTextEmbedder
 from deepstack.components.joiners import DocumentJoiner
+from deepstack.components.preprocessors import DocumentCleaner, DocumentSplitter
+from deepstack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
+from deepstack.components.routers import FileTypeRouter
 from deepstack.components.writers import DocumentWriter
 from deepstack.document_stores.in_memory import InMemoryDocumentStore
-from deepstack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 
 
 def test_dense_doc_search_pipeline(tmp_path, samples_path):

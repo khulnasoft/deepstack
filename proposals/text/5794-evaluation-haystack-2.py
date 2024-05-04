@@ -8,12 +8,11 @@
 import os
 
 from deepstack import Pipeline
-from deepstack.dataclasses.document import Document
-from deepstack.components.retrievers.memory import MemoryBM25Retriever
-from deepstack.document_stores.memory import MemoryDocumentStore
-from deepstack.components.generators.openai.gpt35 import GPT35Generator
 from deepstack.components.builders.prompt_builder import PromptBuilder
-
+from deepstack.components.generators.openai.gpt35 import GPT35Generator
+from deepstack.components.retrievers.memory import MemoryBM25Retriever
+from deepstack.dataclasses.document import Document
+from deepstack.document_stores.memory import MemoryDocumentStore
 
 docstore = MemoryDocumentStore()
 
