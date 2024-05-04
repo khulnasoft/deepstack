@@ -539,7 +539,9 @@ def test_device_map_dict(mocked_automodel, _mocked_autotokenizer, monkeypatch):
 def test_device_map_and_device_warning(caplog):
     with caplog.at_level(logging.WARNING):
         _ = ExtractiveReader(
-            "khulnasoft/roberta-base-squad2", model_kwargs={"device_map": "cpu"}, device=ComponentDevice.from_str("cuda")
+            "khulnasoft/roberta-base-squad2",
+            model_kwargs={"device_map": "cpu"},
+            device=ComponentDevice.from_str("cuda"),
         )
         assert (
             "The parameters `device` and `device_map` from `model_kwargs` are both provided. Ignoring `device` and using `device_map`."

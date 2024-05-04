@@ -110,7 +110,9 @@ class ProxyTracer(Tracer):
 
     def __init__(self, provided_tracer: Tracer) -> None:
         self.actual_tracer: Tracer = provided_tracer
-        self.is_content_tracing_enabled = os.getenv(DEEPSTACK_CONTENT_TRACING_ENABLED_ENV_VAR, "false").lower() == "true"
+        self.is_content_tracing_enabled = (
+            os.getenv(DEEPSTACK_CONTENT_TRACING_ENABLED_ENV_VAR, "false").lower() == "true"
+        )
 
     @contextlib.contextmanager
     def trace(self, operation_name: str, tags: Optional[Dict[str, Any]] = None) -> Iterator[Span]:

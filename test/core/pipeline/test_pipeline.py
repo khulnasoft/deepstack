@@ -462,7 +462,10 @@ def test_from_dict_with_callbacks():
                 "init_parameters": {"add": 1},
             },
             "double": {"type": "deepstack.testing.sample_components.double.Double", "init_parameters": {}},
-            "greet": {"type": "deepstack.testing.sample_components.greet.Greet", "init_parameters": {"message": "test"}},
+            "greet": {
+                "type": "deepstack.testing.sample_components.greet.Greet",
+                "init_parameters": {"message": "test"},
+            },
         },
         "connections": [
             {"sender": "add_two.result", "receiver": "double.value"},
