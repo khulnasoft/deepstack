@@ -1,0 +1,5 @@
+---
+enhancements:
+  - |
+    Merge `Pipeline`s definitions into a single `Pipeline` class.
+    The class in the `deepstack.pipeline` package has been deleted and only `deepstack.core.pipeline` exists now.

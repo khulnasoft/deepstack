@@ -1,0 +1,18 @@
+---
+features:
+  - |
+    Add a new pipeline template `PredefinedPipeline.CHAT_WITH_WEBSITE` to quickly create a pipeline
+    that will answer questions based on data collected from one or more web pages.
+
+    Usage example:
+    ```python
+    from deepstack import Pipeline, PredefinedPipeline
+
+    pipe = Pipeline.from_template(PredefinedPipeline.CHAT_WITH_WEBSITE)
+    result = pipe.run({
+        "fetcher": {"urls": ["https://deepstack.khulnasoft.com/overview/quick-start"]},
+        "prompt": {"query": "How should I install Deepstack?"}}
+    )
+
+    print(result["llm"]["replies"][0])
+    ```

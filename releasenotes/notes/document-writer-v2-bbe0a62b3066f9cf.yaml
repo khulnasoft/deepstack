@@ -1,0 +1,4 @@
+---
+preview:
+  - |
+    Added new DocumentWriter component to Deepstack v2 preview so that documents can be written to stores.

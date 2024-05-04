@@ -1,0 +1,10 @@
+---
+upgrade:
+  - |
+    Change any occurrence of:
+        from deepstack.components.routers.document_joiner import DocumentJoiner
+    to:
+        from deepstack.components.joiners.document_joiner import DocumentJoiner
+enhancements:
+  - |
+    Create a new package called `joiners` and move `DocumentJoiner` there for clarity.

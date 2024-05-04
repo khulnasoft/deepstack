@@ -1,0 +1,4 @@
+---
+fixes:
+  - |
+    Fix Deepstack imports failing when using local development environment that doesn't have `deepstack-ai` installed.
