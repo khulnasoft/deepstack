@@ -160,11 +160,11 @@ data  = {
 }
 ````
 
-Then have another method that  
+Then have another method that
 
 ```python
 def find_inputs_below_threshold(self, metric: str, threshold: float):
-    """Get the all the queries with a score below a certain threshold for a given metric"""  
+    """Get the all the queries with a score below a certain threshold for a given metric"""
 ```
 
 # Drawbacks
