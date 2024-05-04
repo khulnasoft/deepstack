@@ -1,0 +1,4 @@
+---
+preview:
+  - Add Answer base class for deepstack v2
+  - Add GeneratedAnswer and ExtractedAnswer

@@ -1,0 +1,11 @@
+# See https://help.github.com/articles/about-codeowners/ for syntax
+
+# Core Engineering will be the default owners for everything
+# in the repo. Unless a later match takes precedence,
+# @khulnasoft/core-engineering will be requested for review
+# when someone opens a pull request.
+*                       @khulnasoft/open-source-engineering
+
+# Documentation
+*.md                    @khulnasoft/documentation @khulnasoft/open-source-engineering
+releasenotes/notes/*    @khulnasoft/documentation @khulnasoft/open-source-engineering

@@ -1,0 +1,7 @@
+---
+upgrade:
+  - |
+    Any import from `canals` should be rewritten to import from `deepstack.core`
+enhancements:
+  - |
+    Use the code formerly in `canals` from the `deepstack.core` package across the whole codebase.

@@ -1,0 +1,4 @@
+---
+enhancements:
+  - |
+    Include 'boilerpy3' in the 'deepstack-ai' dependencies.

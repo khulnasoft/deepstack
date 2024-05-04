@@ -1,0 +1,4 @@
+preview:
+  - |
+    Create a dedicated dependency list for the preview package, `farm-deepstack[preview]`.
+    Using `deepstack-ai` is still the recommended way to test Deepstack 2.0.
