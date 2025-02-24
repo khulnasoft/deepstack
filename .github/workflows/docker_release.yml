@@ -39,7 +39,7 @@ jobs:
           images: $DOCKER_REPO_NAME
 
       - name: Build base images
-        uses: docker/bake-action@v4
+        uses: docker/bake-action@v6
         env:
           IMAGE_TAG_SUFFIX: ${{ steps.meta.outputs.version }}
           DEEPSTACK_VERSION: ${{ steps.meta.outputs.version }}
